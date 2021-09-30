@@ -13,15 +13,16 @@ import wollok.game.*
 
 object texto {
 	
-	method position() = game.at(2, 4)
+	method position() = game.center()
 	
-	method text() = "¡Pepita!"
+	method text() = "¡Juan el Carpincho!"
 	
-	method textColor() = paleta.verde()
+	method textColor() = paleta.blanco()
 	
 }
 
 object paleta {
 	method verde() = "00FF00FF"
 	method rojo() = "FF0000FF"
+	method blanco() = "FFFFFFFF"
 }
