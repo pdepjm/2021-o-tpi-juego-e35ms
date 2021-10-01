@@ -3,7 +3,7 @@ import miscalena.*
 
 object carpincho {
 	var vida = 3
-	var posicion = game.center()
+	var posicion = game.at(1,5)
 	var aspecto = "carpincho.png"
 
 	method position() = posicion
