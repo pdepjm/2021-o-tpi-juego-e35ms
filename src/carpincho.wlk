@@ -1,5 +1,6 @@
 import wollok.game.*
 import miscalena.*
+import nivel.*
 
 object carpincho {
 	var vida = 3
@@ -9,9 +10,9 @@ object carpincho {
 	method position() = posicion
 	method image() = aspecto
 	method vida() = vida
-	method moverPara(direccion) {
-		posicion = direccion.proximaPosicion(posicion) 
-	}
+	method moverPara(direccion) {     if ( nivel.estaHabilitada(direccion.proximaPosicion(posicion)) )
+                                        posicion = direccion.proximaPosicion(posicion)
+    }
 	method posicion(unaPosicion) {
 		posicion = unaPosicion
 	}
@@ -32,5 +33,9 @@ object carpincho {
 	}
 	method deciTuVida(){
 		game.say(self,"Mi vida es de " + vida.toString() + " HP")
+	}
+	
+	method dameTuPosicion(){
+		return  posicion.clone() 
 	}
 }

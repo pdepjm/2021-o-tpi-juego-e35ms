@@ -30,4 +30,8 @@ object nivel {
 		keyboard.a().onPressDo({carpincho.deciTuVida()})
 	}
 	
+ method estaHabilitada( posicion ){				// sirve para restringir limites del mapa
+ 	      return posicion.x() != 0 && posicion.x() != 1 && posicion.y() != 0 && posicion.y() != 18 && posicion.x() != 18
+ 	      }
+   // }
 }
