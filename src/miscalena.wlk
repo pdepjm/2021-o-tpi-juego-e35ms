@@ -1,6 +1,7 @@
 import wollok.game.*
 import direcciones.*
 import carpincho.*
+import nivel.*
 
 object tincho {
 	var posicion = game.center()
@@ -29,13 +30,13 @@ object pelotaTincho {
 
 class Comida {
 	var tipoComida = comidaSanadora
-	var posicion = game.at(0,1)
+	var posicion = game.at(2,3)
 	var aspecto = ""
 
 	method position() = posicion
 	method image() = aspecto
-	method moverPara(direccion) {
-		posicion = direccion.proximaPosicion(posicion) 
+	method moverPara(direccion) {     if ( nivel.estaHabilitada(direccion.proximaPosicion(posicion)) )
+											posicion = direccion.proximaPosicion(posicion) 
 	}
 	method posicion(unaPosicion) {
 		posicion = unaPosicion
