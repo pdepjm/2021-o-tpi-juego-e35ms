@@ -23,17 +23,19 @@ const tinchoMontania = new Tincho(posicion = game.at(-1,16), aspecto = "tincho_0
 const tinchoCerca = new Tincho(posicion = game.at(0,4), aspecto = "tincho_0001.png")
 
 class PelotaTincho {
-	var posicion = null
+	var posicion = game.center()
 	var aspecto = "pelota_rugby.png"
+	const posicionInicial = posicion
 	
 	method position() = posicion
-	method image() = aspecto
-	method posicion(cual){posicion = cual}
+	method image() 	  = aspecto
+	method posicionInicial()=	posicionInicial 
+	method posicion(cual){	posicion = cual	}
 	
 	method moverPara(direccion) {posicion = direccion.proximaPosicion(posicion)}}
 	
-const pelotaMontania = new PelotaTincho(posicion = tinchoMontania.position())
-const pelotaCerca = new PelotaTincho(posicion = tinchoCerca.position())
+const pelotaMontania = new PelotaTincho(posicion = tinchoMontania.position() )
+const pelotaCerca = new PelotaTincho(posicion = tinchoCerca.position() )
 
 class Comida {
 	var tipoComida = comidaSanadora

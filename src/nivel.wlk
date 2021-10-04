@@ -21,10 +21,9 @@ object nivel {
 		game.onTick(250,"pelotaCercaMoving",{=> pelotaCerca.moverPara(derecha)})
 		game.onCollideDo(carpincho,{comida => comida.efecto()})
 		//game.onCollideDo(carpincho,{vallas => carpincho.restarVida(1)})
-		nivel.configuracionPelota(pelotaMontania)
-		 // Hacer un if con game.hasVisual
 		
-		game.onTick(5000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaMontania)}) //Hay que calcular los tiempos porque en caso de que quieran salir dos pelotas al mismo tiempo nos dira "pelota ya esta en el juego"
+		game.onTick(6000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaMontania)}) //Hay que calcular los tiempos porque en caso de que quieran salir dos pelotas al mismo tiempo nos dira "pelota ya esta en el juego"
+
 		self.configurarTeclas()
 	}
 	
@@ -43,12 +42,18 @@ object nivel {
  	}
  	
  	method configuracionPelota(unaPelota){ 
+ 		unaPelota.posicion( unaPelota.posicionInicial() )
+ 		game.addVisual(unaPelota)
  		
-		game.schedule(3000,{=> game.addVisual(unaPelota)})
+		game.onTick(250,"pelotaMoving",{=> unaPelota.moverPara(derecha)})
+		game.schedule(6000,{=> game.removeVisual(unaPelota)} )
+		game.schedule(6000,{=> game.removeTickEvent("pelotaMoving")} )
+		
 		if(game.hasVisual(unaPelota)){
-			game.onTick(250,"pelotaMoving",{=> unaPelota.moverPara(derecha)})
-		}
-		//game.onTick(6000,"pelotaDeseaparece",{=> game.removeVisual(unaPelota)})
+			game.say(tinchoMontania, "esta mi pelota")	// debugging
+		}  else{
+			game.say(tinchoMontania, "NO esta mi pelota") // debuggin
+		}	
 	}
 }
 	
