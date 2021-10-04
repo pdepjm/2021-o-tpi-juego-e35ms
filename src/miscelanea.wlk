@@ -24,7 +24,7 @@ const tinchoCerca = new Tincho(posicion = game.at(0,4), aspecto = "tincho_0001.p
 
 class PelotaTincho {
 	var posicion = game.center()
-	var aspecto = "pelota_rugby.png"
+	var aspecto = "pelotaRugby.png"
 	const tinchoACargo = null
 	const posicionInicial = posicion
 
@@ -38,6 +38,9 @@ class PelotaTincho {
 	
 const pelotaMontania = new PelotaTincho(posicion = tinchoMontania.position(), tinchoACargo = tinchoMontania)
 const pelotaCerca = new PelotaTincho(posicion = tinchoCerca.position(), tinchoACargo = tinchoCerca )
+const pelotaGolfArriba = new PelotaTincho(posicion = game.at(4,18), tinchoACargo = tinchoCerca, aspecto = "pelotaGolf.png" )
+const pelotaGolfAbajo = new PelotaTincho(posicion = game.at(13,0), tinchoACargo = tinchoCerca, aspecto = "pelotaGolf.png" )
+const pelotaGolfDerecha = new PelotaTincho(posicion = game.at(18,9), tinchoACargo = tinchoCerca, aspecto = "pelotaGolf.png" )
 
 class Comida {
 	var tipoComida = comidaSanadora
@@ -52,12 +55,9 @@ class Comida {
 	method posicion(unaPosicion) {
 		posicion = unaPosicion
 	}
-	method efecto(){
-		tipoComida.efecto()
-	}
 	method esProyectil() = false
 }
-const sandia = new Comida(aspecto = "sandia.png")
+const sandia = new Comida(aspecto = "sandiaLoca.png")
 
 object comidaSanadora {
 	const vidaQueRecupera = 1
@@ -65,15 +65,3 @@ object comidaSanadora {
 	method efecto(){
 		carpincho.aumentarVida(vidaQueRecupera)}
 }
-
-//object comidaFrenetica {
-//	method efecto(){
-//		carpincho.aumentarVelocidad()
-//	}
-//}
-
-//object vallas {
-//	method position() = game.center()
-//	
-//	method image() = "Background2vallas.png"
-//}
