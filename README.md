@@ -1,10 +1,13 @@
-# Nombre del juego (<- borrar y completar)
+# Carpinchos vs Tinchos
 
 ## Equipo de desarrollo
 
-- Alguien
-- Persona
-- etc.
+- Lecaldare Augusto
+- Alexander Kalinin
+- Leandro Marcelo Lienard Guerrisi
+- Felipe Nani
+- Santiago Arrascaeta
+- Gonzalo Gabriel Garmon
 
 ## Capturas
 
@@ -16,4 +19,4 @@
 
 ## Respuestas teóricas
 
-(link al archivo o bien responder acá)
+https://docs.google.com/document/d/19ooKlLSsJC18wl4JwbdQYCpd6rUXKhYVAvOy6OmHtIw/edit?usp=sharing

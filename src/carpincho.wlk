@@ -1,5 +1,5 @@
 import wollok.game.*
-import miscalena.*
+import miscelanea.*
 import nivel.*
 
 object carpincho {

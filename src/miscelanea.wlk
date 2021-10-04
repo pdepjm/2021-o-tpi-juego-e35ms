@@ -3,30 +3,37 @@ import direcciones.*
 import carpincho.*
 import nivel.*
 
-object tincho {
+class Tincho {
+	var aspecto = null
 	var posicion = game.center()
 	
 	method position() = posicion
 
-	method image() = "tincho_0001.png"
+	method image() = aspecto
 	
 	method moverPara(direccion) {
 		posicion = direccion.proximaPosicion(posicion) 
 	}
-	
 	method posicion(unaPosicion) {
 		posicion = unaPosicion
 	}
 }
 
-object pelotaTincho {
-	var posicion = game.at(1,1)
+const tinchoMontania = new Tincho(posicion = game.at(-1,16), aspecto = "tincho_0001.png")
+const tinchoCerca = new Tincho(posicion = game.at(0,4), aspecto = "tincho_0001.png")
+
+class PelotaTincho {
+	var posicion = null
 	var aspecto = "pelota_rugby.png"
 	
 	method position() = posicion
-	
 	method image() = aspecto
-}
+	method posicion(cual){posicion = cual}
+	
+	method moverPara(direccion) {posicion = direccion.proximaPosicion(posicion)}}
+	
+const pelotaMontania = new PelotaTincho(posicion = tinchoMontania.position())
+const pelotaCerca = new PelotaTincho(posicion = tinchoCerca.position())
 
 class Comida {
 	var tipoComida = comidaSanadora
