@@ -25,17 +25,19 @@ const tinchoCerca = new Tincho(posicion = game.at(0,4), aspecto = "tincho_0001.p
 class PelotaTincho {
 	var posicion = game.center()
 	var aspecto = "pelota_rugby.png"
+	const tinchoACargo = null
 	const posicionInicial = posicion
-	
+
 	method position() = posicion
 	method image() 	  = aspecto
 	method posicionInicial()=	posicionInicial 
+	method tinchoACargo() = tinchoACargo
+	method esProyectil() = true
 	method posicion(cual){	posicion = cual	}
-	
 	method moverPara(direccion) {posicion = direccion.proximaPosicion(posicion)}}
 	
-const pelotaMontania = new PelotaTincho(posicion = tinchoMontania.position() )
-const pelotaCerca = new PelotaTincho(posicion = tinchoCerca.position() )
+const pelotaMontania = new PelotaTincho(posicion = tinchoMontania.position(), tinchoACargo = tinchoMontania)
+const pelotaCerca = new PelotaTincho(posicion = tinchoCerca.position(), tinchoACargo = tinchoCerca )
 
 class Comida {
 	var tipoComida = comidaSanadora
@@ -53,6 +55,7 @@ class Comida {
 	method efecto(){
 		tipoComida.efecto()
 	}
+	method esProyectil() = false
 }
 const sandia = new Comida(aspecto = "sandia.png")
 
