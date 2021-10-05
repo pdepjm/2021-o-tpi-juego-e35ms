@@ -24,30 +24,3 @@ const pelotaCerca = new PelotaTincho(posicion = tinchoCerca.position(), tinchoAC
 const pelotaGolfArriba = new PelotaTincho(posicion = game.at(4,18), tinchoACargo = tinchoCerca, aspecto = "pelotaGolf.png" )
 const pelotaGolfAbajo = new PelotaTincho(posicion = game.at(13,0), tinchoACargo = tinchoCerca, aspecto = "pelotaGolf.png" )
 const pelotaGolfDerecha = new PelotaTincho(posicion = game.at(18,9), tinchoACargo = tinchoCerca, aspecto = "pelotaGolf.png" )
-
-class Comida {
-	var tipoComida = comidaSanadora
-	var posicion = game.at(2,3)
-	var aspecto = ""
-
-	method position() = posicion
-	method image() = aspecto
-	method moverPara(direccion) {     if ( nivel.estaHabilitada(direccion.proximaPosicion(posicion)) )
-											posicion = direccion.proximaPosicion(posicion) 
-	}
-	method posicion(unaPosicion) {
-		posicion = unaPosicion
-	}
-	
-	method esProyectil() = false
-	
-
-}
-const sandia = new Comida(aspecto = "sandiaLoca.png")
-
-object comidaSanadora {
-	const vidaQueRecupera = 1
-	
-	method efecto(){
-		carpincho.aumentarVida(vidaQueRecupera)}
-}

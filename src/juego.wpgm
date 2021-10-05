@@ -8,7 +8,7 @@ program juego {
 	game.height(20)
 	game.width(20)
 	
-	game.title("Carpincho´s Game")
+	game.title("Carpinchos Invasores")
 	
 	nivel.configuracionInicial()
 	game.start()

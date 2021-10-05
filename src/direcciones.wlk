@@ -3,8 +3,11 @@ import carpincho.*
 import nivel.*
 
 object coordenadaPosible{
-	method alAzar() = (new Range (start = 2, end = 16)).anyOne()
-	method coordAlAzar() = [game.at(0,self.alAzar()),game.at(self.alAzar(),18),game.at(18,self.alAzar()),game.at(self.alAzar(),0),game.at(self.alAzar(),9)]
+	method alAzarMapa() = (new Range (start = 2, end = 16)).anyOne()
+	method alAzarGolf() = (new Range (start = 4, end = 14)).anyOne()
+	method coordAlAzarArriba() = game.at(self.alAzarGolf(),18)
+	method coordAlAzarAbajo() = game.at(self.alAzarGolf(),0)
+	method coordAlAzarDerecha() = game.at(18,self.alAzarGolf())
 }
 
 object direccionesPosibles{

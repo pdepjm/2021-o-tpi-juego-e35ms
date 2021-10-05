@@ -10,11 +10,8 @@ object nivel {
 		game.addVisual(carpincho)
 		game.addVisual(tinchoMontania)
 		game.addVisual(tinchoCerca)
-		//game.addVisual(sandia)
-		//game.addVisual(vallas)
-		//game.addVisual(texto)
+		//game.addVisual(texto) -> En un futuro!
 		game.boardGround("Background.png")
-		//game.onTick(100,"sandiaMoving",{=> sandia.moverPara(direccionesPosibles.direccionAlAzar())})
 		game.onTick(6000, "sandiaAppearing", {=>self.configuracionSandia(sandia)})
 		game.onCollideDo(carpincho,{comida => comida.efecto()})
 		game.onTick(3000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaMontania,3000,derecha)})
@@ -25,7 +22,9 @@ object nivel {
 		game.onCollideDo(carpincho,{objeto => carpincho.hacerEfecto(objeto)})
 		self.configurarTeclas()
 	}
-	
+
+// TECLAS
+
 	method configurarTeclas(){
 		keyboard.left().onPressDo({ carpincho.moverPara(izquierda)
 			carpincho.cambiarAspecto("carpincho_left.png")})
@@ -36,26 +35,38 @@ object nivel {
 		keyboard.a().onPressDo({carpincho.deciTuVida()})
 	}
 	
+// MARGENES DEL MAPA HABILITADOS PARA NUESTRO CARPINCHO/ELEMENTOS	
+	
  	method estaHabilitada( posicion ){	// Sirve para restringir limites del mapa
  		return  posicion.x() != 1 && posicion.y() != 0 && posicion.y() != 18 && posicion.x() != 18
  	}
  	
- 	method configuracionPelota(unaPelota,tiempo,direccion){ // Faltaria hacer que las pelotas de golf cada vez que se ejecutan tengan unas coordenadas distintas
- 		unaPelota.posicion( unaPelota.posicionInicial() )
+// CONFIGURACION DE PELOTAS
+ 	
+ 	method configuracionPelota(unaPelota,tiempo,direccion){
+ 		if(unaPelota.image() == "pelotaGolf.png"){
+ 			if(direccion == arriba)		{unaPelota.posicion(coordenadaPosible.coordAlAzarAbajo())}
+			if(direccion == abajo)		{unaPelota.posicion(coordenadaPosible.coordAlAzarArriba())}
+			if(direccion == izquierda)	{unaPelota.posicion(coordenadaPosible.coordAlAzarDerecha())}
+ 		}
+ 		else
+ 			unaPelota.posicion(unaPelota.posicionInicial())
  		game.addVisual(unaPelota)
 		game.onTick(100,"pelotaMoving",{=> unaPelota.moverPara(direccion)})
 		game.schedule(tiempo-100,{=> game.removeVisual(unaPelota)} )
 		game.schedule(tiempo-100,{=> game.removeTickEvent("pelotaMoving")} )
 		
 		if(game.hasVisual(unaPelota)){
-			game.say(unaPelota.tinchoACargo(), "ahi va la ovalada man")	// Debugging
+			game.say(unaPelota.tinchoACargo(), "ahi va la ovalada man")
 		}  else{
-			game.say(tinchoMontania, "NO esta mi pelota") // Debuggin
+			game.say(tinchoMontania, "NO esta mi pelota") 
 		}	
 	}
+
+// CONFIGURACION DE SANDIAS
 	
 	method configuracionSandia(unaSandia){
-		unaSandia.posicion(game.at(coordenadaPosible.alAzar(),coordenadaPosible.alAzar()) )
+		unaSandia.posicion(game.at(coordenadaPosible.alAzarMapa(),coordenadaPosible.alAzarMapa()) )
 		game.addVisual(unaSandia) 
 		game.onTick(100,"sandiaMoving", {unaSandia.moverPara(direccionesPosibles.direccionAlAzar())}) 
 		game.schedule(3000,{=> game.removeVisual(unaSandia)} )
