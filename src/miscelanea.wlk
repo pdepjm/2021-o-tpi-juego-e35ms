@@ -26,11 +26,12 @@ class Tincho {
 const tinchoMontania = new Tincho(posicion = game.at(-1,16), aspecto = "tincho_0001.png")
 const tinchoCerca = new Tincho(posicion = game.at(0,4), aspecto = "tincho_0003.png")
 
-// MODELAMOS LA CLASE COMIDA
+// MODELAMOS LA CLASE Item
 
-class Comida {
+class Item {
 	var posicion = game.at(2,3)
 	var aspecto = null
+	var aumentoDeVida = null
 
 	method position() = posicion
 	method image() = aspecto
@@ -40,9 +41,21 @@ class Comida {
 	method posicion(unaPosicion) {
 		posicion = unaPosicion
 	}
+	method hacerEfecto(capybara){
+		capybara.aumentarVida(aumentoDeVida)
+	}
 	
-	method esProyectil() = false
 }
 
-// CREAMOS LOS OBJETOS DE LA CLASE COMIDA
-const sandia = new Comida(aspecto = "sandiaLoca.png")
+// CREAMOS LOS OBJETOS DE LA CLASE Item
+const sandia = new Item(aspecto = "mate.png",aumentoDeVida = 1)
+const mate = new Item(aspecto = "mate.png",aumentoDeVida = 0) // El mate será un item que use herencia ya que será igual que la sandia pero se agregaria un metodo "contador" que sume los mates agarrados
+
+object particula {
+	method image() = "hitnegative.png"
+	method position() = carpincho.position()
+}
+
+object hud {
+	method image() = "hud" + carpincho.vida() + ".png"
+}

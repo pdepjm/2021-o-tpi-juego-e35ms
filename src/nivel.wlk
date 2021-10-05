@@ -12,14 +12,15 @@ object nivel {
 		game.addVisual(tinchoCerca)
 		//game.addVisual(texto) -> En un futuro!
 		game.boardGround("Background.png")
+		game.onCollideDo(carpincho,{elemento => elemento.hacerEfecto(carpincho)
+									carpincho.deciTuVida()
+									self.configuracionParticula(particula)})
 		game.onTick(6000, "sandiaAppearing", {=>self.configuracionSandia(sandia)})
-		game.onCollideDo(carpincho,{comida => comida.efecto()})
 		game.onTick(3000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaMontania,3000,derecha)})
 		game.onTick(4000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaCerca,4000,derecha)})
 		game.onTick(4000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaGolfArriba,4000,abajo)})
 		game.onTick(4000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaGolfAbajo,4000,arriba)})
 		game.onTick(4000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaGolfDerecha,4000,izquierda)})
-		game.onCollideDo(carpincho,{objeto => carpincho.hacerEfecto(objeto)})
 		self.configurarTeclas()
 	}
 
@@ -44,12 +45,12 @@ object nivel {
 // CONFIGURACION DE PELOTAS
  	
  	method configuracionPelota(unaPelota,tiempo,direccion){
- 		if(unaPelota.image() == "pelotaGolf.png"){
- 			if(direccion == arriba)		{unaPelota.posicion(coordenadaPosible.coordAlAzarAbajo())}
-			if(direccion == abajo)		{unaPelota.posicion(coordenadaPosible.coordAlAzarArriba())}
-			if(direccion == izquierda)	{unaPelota.posicion(coordenadaPosible.coordAlAzarDerecha())}
- 		}
- 		else
+ //		if(unaPelota.image() == "pelotaGolf.png"){
+ //			if(direccion == arriba)		{unaPelota.posicion(coordenadaPosible.coordAlAzarAbajo())}
+//			if(direccion == abajo)		{unaPelota.posicion(coordenadaPosible.coordAlAzarArriba())}
+//			if(direccion == izquierda)	{unaPelota.posicion(coordenadaPosible.coordAlAzarDerecha())}
+// 		}
+// 		else
  			unaPelota.posicion(unaPelota.posicionInicial())
  		game.addVisual(unaPelota)
 		game.onTick(100,"pelotaMoving",{=> unaPelota.moverPara(direccion)})
@@ -66,13 +67,21 @@ object nivel {
 // CONFIGURACION DE SANDIAS
 	
 	method configuracionSandia(unaSandia){
-		unaSandia.posicion(game.at(coordenadaPosible.alAzarMapa(),coordenadaPosible.alAzarMapa()) )
+		unaSandia.posicion(game.at(coordenadaPosible.alAzar(2,16),coordenadaPosible.alAzar(2,16)) )
 		game.addVisual(unaSandia) 
 		game.onTick(100,"sandiaMoving", {unaSandia.moverPara(direccionesPosibles.direccionAlAzar())}) 
 		game.schedule(3000,{=> game.removeVisual(unaSandia)} )
 		game.schedule(3000,{=> game.removeTickEvent("sandiaMoving")} )
+		}
+
+// CONFIGURACION DE PARTICULAS
 		
-	}
+	method configuracionParticula(unaParticula){
+		game.addVisual(unaParticula)
+		game.schedule(500,{=> game.removeVisual(unaParticula)} )
+	}	
 }
 	
+
+
 

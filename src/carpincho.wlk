@@ -21,14 +21,6 @@ object carpincho {
 	method cambiarAspecto(aCual){	aspecto = aCual					}
 	method estaMuerto()			{	return vida == 0				}
 	method comer(comida)		{	return true						}
-	method hacerEfecto(elemento){
-		if(elemento.esProyectil()){
-			self.restarVida(1)
-			self.deciTuVida()}
-		else
-			self.aumentarVida(1)
-			self.deciTuVida()
-	}
 	method deciTuVida(){	
 				game.say(self,"Mi vida es de " + vida.toString() + " HP")
 	}
