@@ -3,17 +3,19 @@ import carpincho.*
 import direcciones.*
 import texto.*
 import miscelanea.*
+import proyectiles.*
 
 object nivel {
 	method configuracionInicial(){
 		game.addVisual(carpincho)
 		game.addVisual(tinchoMontania)
 		game.addVisual(tinchoCerca)
-		game.addVisual(sandia)
+		//game.addVisual(sandia)
 		//game.addVisual(vallas)
 		//game.addVisual(texto)
 		game.boardGround("Background.png")
-		game.onTick(100,"sandiaMoving",{=> sandia.moverPara(direccionesPosibles.direccionAlAzar())})
+		//game.onTick(100,"sandiaMoving",{=> sandia.moverPara(direccionesPosibles.direccionAlAzar())})
+		game.onTick(6000, "sandiaAppearing", {=>self.configuracionSandia(sandia)})
 		game.onCollideDo(carpincho,{comida => comida.efecto()})
 		game.onTick(3000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaMontania,3000,derecha)})
 		game.onTick(4000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaCerca,4000,derecha)})
@@ -50,6 +52,15 @@ object nivel {
 		}  else{
 			game.say(tinchoMontania, "NO esta mi pelota") // Debuggin
 		}	
+	}
+	
+	method configuracionSandia(unaSandia){
+		unaSandia.posicion(game.at(coordenadaPosible.alAzar(),coordenadaPosible.alAzar()) )
+		game.addVisual(unaSandia) 
+		game.onTick(100,"sandiaMoving", {unaSandia.moverPara(direccionesPosibles.direccionAlAzar())}) 
+		game.schedule(3000,{=> game.removeVisual(unaSandia)} )
+		game.schedule(3000,{=> game.removeTickEvent("sandiaMoving")} )
+		
 	}
 }
 	
