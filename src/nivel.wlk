@@ -10,12 +10,13 @@ object nivel {
 		game.addVisual(carpincho)
 		game.addVisual(tinchoMontania)
 		game.addVisual(tinchoCerca)
+		game.addVisual(hud)
 		//game.addVisual(texto) -> En un futuro!
 		game.boardGround("Background.png")
 		game.onCollideDo(carpincho,{elemento => elemento.hacerEfecto(carpincho)
 									carpincho.deciTuVida()
 									self.configuracionParticula(particula)})
-		game.onTick(6000, "sandiaAppearing", {=>self.configuracionSandia(sandia)})
+		game.onTick(6000,"sandiaAppearing",{=>self.configuracionSandia(sandia)})
 		game.onTick(3000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaMontania,3000,derecha)})
 		game.onTick(4000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaCerca,4000,derecha)})
 		game.onTick(4000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaGolfArriba,4000,abajo)})
@@ -34,6 +35,7 @@ object nivel {
 		keyboard.up().onPressDo({ carpincho.moverPara(arriba) })
 		keyboard.down().onPressDo({ carpincho.moverPara(abajo) })
 		keyboard.a().onPressDo({carpincho.deciTuVida()})
+		//keyboard.space().onPressDo({}) --> Presionar barra para empezar juego, un menu
 	}
 	
 // MARGENES DEL MAPA HABILITADOS PARA NUESTRO CARPINCHO/ELEMENTOS	
@@ -45,12 +47,12 @@ object nivel {
 // CONFIGURACION DE PELOTAS
  	
  	method configuracionPelota(unaPelota,tiempo,direccion){
- //		if(unaPelota.image() == "pelotaGolf.png"){
- //			if(direccion == arriba)		{unaPelota.posicion(coordenadaPosible.coordAlAzarAbajo())}
-//			if(direccion == abajo)		{unaPelota.posicion(coordenadaPosible.coordAlAzarArriba())}
-//			if(direccion == izquierda)	{unaPelota.posicion(coordenadaPosible.coordAlAzarDerecha())}
-// 		}
-// 		else
+ 			if(unaPelota.image() == "pelotaGolf.png"){
+ 			if(direccion == arriba)		{unaPelota.posicion(coordenadaPosible.coordAlAzarAbajo())}
+			if(direccion == abajo)		{unaPelota.posicion(coordenadaPosible.coordAlAzarArriba())}
+			if(direccion == izquierda)	{unaPelota.posicion(coordenadaPosible.coordAlAzarDerecha())}
+ 		}
+ 		else
  			unaPelota.posicion(unaPelota.posicionInicial())
  		game.addVisual(unaPelota)
 		game.onTick(100,"pelotaMoving",{=> unaPelota.moverPara(direccion)})

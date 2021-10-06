@@ -57,5 +57,6 @@ object particula {
 }
 
 object hud {
-	method image() = "hud" + carpincho.vida() + ".png"
+	method image() = "hud" + (carpincho.vida() + 1).toString() + ".png"
+	method position() = game.at(10,1)
 }
