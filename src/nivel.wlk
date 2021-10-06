@@ -14,8 +14,7 @@ object nivel {
 		//game.addVisual(texto) -> En un futuro!
 		game.boardGround("Background.png")
 		game.onCollideDo(carpincho,{elemento => elemento.hacerEfecto(carpincho)
-									carpincho.deciTuVida()
-									self.configuracionParticula(particula)})
+						self.configuracionParticula(particulaNegativa)})
 		game.onTick(6000,"sandiaAppearing",{=>self.configuracionSandia(sandia)})
 		game.onTick(3000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaMontania,3000,derecha)})
 		game.onTick(4000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaCerca,4000,derecha)})
@@ -34,7 +33,6 @@ object nivel {
 			carpincho.cambiarAspecto("carpincho.png")})
 		keyboard.up().onPressDo({ carpincho.moverPara(arriba) })
 		keyboard.down().onPressDo({ carpincho.moverPara(abajo) })
-		keyboard.a().onPressDo({carpincho.deciTuVida()})
 		//keyboard.space().onPressDo({}) --> Presionar barra para empezar juego, un menu
 	}
 	

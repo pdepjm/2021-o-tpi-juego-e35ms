@@ -21,9 +21,9 @@ object carpincho {
 	method cambiarAspecto(aCual){	aspecto = aCual					}
 	method estaMuerto()			{	return vida == 0				}
 	method comer(comida)		{	return true						}
-	method deciTuVida(){	
-				game.say(self,"Mi vida es de " + vida.toString() + " HP")
-	}
+	//method deciTuVida(){	
+	//			game.say(self,"Mi vida es de " + vida.toString() + " HP")
+	//}
 	
 
 }
