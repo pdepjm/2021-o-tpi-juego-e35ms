@@ -3,7 +3,7 @@ import carpincho.*
 import direcciones.*
 import texto.*
 import miscelanea.*
-import proyectiles.*
+import colisionables.*
 
 object nivel {
 	method configuracionInicial(){
@@ -15,7 +15,8 @@ object nivel {
 		game.boardGround("Background.png")
 		game.onCollideDo(carpincho,{elemento => elemento.hacerEfecto(carpincho)
 						self.configuracionParticula(particulaNegativa)})
-		game.onTick(6000,"sandiaAppearing",{=>self.configuracionSandia(sandia)})
+		game.onTick(6000,"sandiaAppearing",{=> self.configuracionAlimento(sandia)})
+		game.onTick(6000,"mateAppearing"  ,{=> self.configuracionAlimento(mate)})
 		game.onTick(3000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaMontania,3000,derecha)})
 		game.onTick(4000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaCerca,4000,derecha)})
 		game.onTick(4000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaGolfArriba,4000,abajo)})
@@ -25,7 +26,6 @@ object nivel {
 	}
 
 // TECLAS
-
 	method configurarTeclas(){
 		keyboard.left().onPressDo({ carpincho.moverPara(izquierda)
 			carpincho.cambiarAspecto("carpincho_left.png")})
@@ -37,13 +37,11 @@ object nivel {
 	}
 	
 // MARGENES DEL MAPA HABILITADOS PARA NUESTRO CARPINCHO/ELEMENTOS	
-	
  	method estaHabilitada( posicion ){	// Sirve para restringir limites del mapa
  		return  posicion.x() != 1 && posicion.y() != 0 && posicion.y() != 18 && posicion.x() != 18
  	}
  	
 // CONFIGURACION DE PELOTAS
- 	
  	method configuracionPelota(unaPelota,tiempo,direccion){
  			if(unaPelota.image() == "pelotaGolf.png"){
  			if(direccion == arriba)		{unaPelota.posicion(coordenadaPosible.coordAlAzarAbajo())}
@@ -65,17 +63,15 @@ object nivel {
 	}
 
 // CONFIGURACION DE SANDIAS
-	
-	method configuracionSandia(unaSandia){
-		unaSandia.posicion(game.at(coordenadaPosible.alAzar(2,16),coordenadaPosible.alAzar(2,16)) )
-		game.addVisual(unaSandia) 
-		game.onTick(100,"sandiaMoving", {unaSandia.moverPara(direccionesPosibles.direccionAlAzar())}) 
-		game.schedule(3000,{=> game.removeVisual(unaSandia)} )
-		game.schedule(3000,{=> game.removeTickEvent("sandiaMoving")} )
+	method configuracionAlimento(unAlimento){
+		unAlimento.posicion(game.at(coordenadaPosible.alAzar(2,16),coordenadaPosible.alAzar(2,16)) )
+		game.addVisual(unAlimento) 
+		game.onTick(100,"alimentoMoving", {unAlimento.moverPara(direccionesPosibles.direccionAlAzar())}) 
+		game.schedule(3000,{=> game.removeVisual(unAlimento)} )
+		game.schedule(3000,{=> game.removeTickEvent("alimentoMoving")} )
 		}
 
 // CONFIGURACION DE PARTICULAS
-		
 	method configuracionParticula(unaParticula){
 		game.addVisual(unaParticula)
 		game.schedule(500,{=> game.removeVisual(unaParticula)} )

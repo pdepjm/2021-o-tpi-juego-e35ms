@@ -15,7 +15,7 @@ object texto {
 	
 	method position() = game.center()
 	
-	method text() = "¡Juan el Carpincho!"
+	method text() = "¡Presiona espacio para comenzar!"
 	
 	method textColor() = paleta.blanco()
 	
