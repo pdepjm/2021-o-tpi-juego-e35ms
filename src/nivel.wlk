@@ -5,6 +5,24 @@ import texto.*
 import miscelanea.*
 import colisionables.*
 
+object menu
+{
+    method configuracionInicial(){
+        game.boardGround("Background.png")
+        self.configurarTeclas()
+    }
+    method configurarTeclas(){
+        keyboard.space().onPressDo({self.comenzarJuego()})
+    }
+    method comenzarJuego(){
+		
+        nivel.configuracionInicial()
+        nivel.configurarTeclas()
+		nivel.configurarTimers()
+
+    }
+}
+
 object nivel {
 	method configuracionInicial(){
 		game.addVisual(carpincho)

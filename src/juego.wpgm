@@ -10,9 +10,8 @@ program juego {
 	
 	game.title("Carpinchos Invasores")
 	
-	nivel.configuracionInicial()
-	nivel.configurarTeclas()
-	nivel.configurarTimers()
+	menu.configuracionInicial()
+
 	
 	game.start()
 }
