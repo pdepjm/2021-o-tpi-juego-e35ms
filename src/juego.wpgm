@@ -4,7 +4,7 @@ import texto.*
 import nivel.*
 
 program juego {
-	game.cellSize(40)
+	game.cellSize(41)
 	game.height(20)
 	game.width(20)
 	
