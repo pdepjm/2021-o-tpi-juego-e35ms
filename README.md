@@ -12,7 +12,6 @@
 ## Capturas
 
 ![mi foto](foto2.jpeg)
-
 ![mi foto](foto1.jpeg)
 
 ## Reglas de Juego / Instrucciones
