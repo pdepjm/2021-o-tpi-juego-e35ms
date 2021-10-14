@@ -1,11 +1,41 @@
 import soundProducer.*
+import wollok.game.*
+import carpincho.*
+import texto.*
+import nivel.*
+import colisionables.*
 
-describe "Inserte descripción" {
-	method initialize() {
-		soundProducer.provider(soundProviderMock)		
-	}
+
+describe "Test efectos" {
+	//method initialize() {
+	//	soundProducer.provider(soundProviderMock)		
+	//}
 	
-	test "testX" {
-		assert.that(true)
+	method initialize() {
+		game.cellSize(40)
+		game.height(20)
+		game.width(20)
+	
+		game.title("Carpinchos Invasores")
+	
+		nivel.configuracionInicial()
+	}
+	test "carpincho choca con pelota de rugby " {
+		pelotaCerca.hacerEfecto(carpincho)
+		assert.that(carpincho.vida() == 1)
 	}	
+	test "carpincho choca con pelota de golf " {
+		pelotaGolfArriba.hacerEfecto(carpincho)
+		assert.that(carpincho.vida() == 2)
+	}	
+	test "carpincho come una sandia " {
+		carpincho.restarVida(2)
+		sandia.hacerEfecto(carpincho)
+		assert.that(carpincho.vida() == 2 )
+	}	
+	test "carpincho muerto :("{
+		carpincho.restarVida(3)
+		
+		assert.that(carpincho.estaMuerto())
+	}
 }

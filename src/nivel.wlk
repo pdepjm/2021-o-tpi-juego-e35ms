@@ -15,14 +15,9 @@ object nivel {
 		game.boardGround("Background.png")
 		game.onCollideDo(carpincho,{elemento => elemento.hacerEfecto(carpincho)
 						self.configuracionParticula(particulaNegativa)})
-		game.onTick(6000,"sandiaAppearing",{=> self.configuracionAlimento(sandia)})
-		game.onTick(6000,"mateAppearing"  ,{=> self.configuracionAlimento(mate)})
-		game.onTick(3000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaMontania,3000,derecha)})
-		game.onTick(4000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaCerca,4000,derecha)})
-		game.onTick(4000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaGolfArriba,4000,abajo)})
-		game.onTick(4000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaGolfAbajo,4000,arriba)})
-		game.onTick(4000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaGolfDerecha,4000,izquierda)})
-		self.configurarTeclas()
+	
+		
+		
 	}
 
 // TECLAS
@@ -75,6 +70,17 @@ object nivel {
 	method configuracionParticula(unaParticula){
 		game.addVisual(unaParticula)
 		game.schedule(500,{=> game.removeVisual(unaParticula)} )
+	}
+// CONFIGURACION DE LOS onTick
+	method configurarTimers(){
+		game.onTick(6000,"sandiaAppearing",{=> self.configuracionAlimento(sandia)})
+		game.onTick(6000,"mateAppearing"  ,{=> self.configuracionAlimento(mate)})
+		game.onTick(3000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaMontania,3000,derecha)})
+		game.onTick(4000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaCerca,4000,derecha)})
+		game.onTick(4000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaGolfArriba,4000,abajo)})
+		game.onTick(4000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaGolfAbajo,4000,arriba)})
+		game.onTick(4000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaGolfDerecha,4000,izquierda)})
+		
 	}	
 }
 	

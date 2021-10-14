@@ -15,11 +15,11 @@
 
 ## Reglas de Juego / Instrucciones
 
-Somos un carpincho invasor en nordelta y tenemos que sobrevivir a las amenazas de la población humana que vive en esta zona.
-Nuestro objetivo es recolectar la mayor cantidad de mates posibles sin morir.
-Tenemos inicialmente 3 vidas.
-Las personas nos estarán arrojando pelotas que nos quitarán vida: golf(nos quita 1 vidas), rugby(nos quita 2 vidas).
-Tendremos bonificadores: sandía (recupera 1 vida)
+El juego tiene como protagonista un Carpincho, el cual se encuentra por circunstancias de la vida en Nordelta, donde sus habitantes no felices con su presencia lo verán como una amenaza, atacandolo así con objetos que encuentren a su alcance.
+ Nuestro objetivo será sobrevivir la mayor cantidad de tiempo posible, recolectando durante ese tiempo la mayor cantidad de mates.
+ Inicialmente poseemos tres corazones, los cuales indicaran nuestra vida, pueden ir variando según lo que vaya sucediendo en la partida;
+  - En el caso de recibir un proyectil por parte de los habitantes de Nordelta nuestra vida disminuirá (2 corazones con una pelota de Rugby, 1 con una pelota de Golf)
+  - En el caso de comer frutas que se encuentren en el escenario nuestra vida aumentará (1 corazon por fruta)
 
 ## Respuestas teóricas
 
