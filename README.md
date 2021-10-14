@@ -1,4 +1,4 @@
-# Carpinchos vs Tinchos
+# Carpinchos Invasores
 
 ## Equipo de desarrollo
 
