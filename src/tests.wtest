@@ -22,7 +22,7 @@ describe "Test efectos" {
 	}
 	test "carpincho choca con pelota de rugby " {
 		pelotaCerca.hacerEfecto(carpincho)
-		assert.that(carpincho.vida() == 1)
+		assert.equals(1,carpincho.vida())
 	}	
 	test "carpincho choca con pelota de golf " {
 		pelotaGolfArriba.hacerEfecto(carpincho)

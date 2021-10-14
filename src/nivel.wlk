@@ -35,7 +35,7 @@ object nivel {
 		//game.addVisual(texto) -> En un futuro!
 		game.boardGround("Background.png")
 		game.onCollideDo(carpincho,{elemento => elemento.hacerEfecto(carpincho)
-						self.configuracionParticula(particulaNegativa)})
+						self.configuracionParticula(particulaNegativa)}) // ojo acá la configuración debería estar en hacerEfecto.
 	
 		
 		
@@ -44,7 +44,8 @@ object nivel {
 // TECLAS
 	method configurarTeclas(){
 		keyboard.left().onPressDo({ carpincho.moverPara(izquierda)
-			carpincho.cambiarAspecto("carpincho_left.png")})
+			carpincho.cambiarAspecto("carpincho_left.png")}) // la responsabilidad de cambiar el aspecto es del carpincho.
+			// No vale usar if para resolver esto, resuelvan polimórficamente.
 		keyboard.right().onPressDo({ carpincho.moverPara(derecha)
 			carpincho.cambiarAspecto("carpincho.png")})
 		keyboard.up().onPressDo({ carpincho.moverPara(arriba) })
@@ -59,13 +60,17 @@ object nivel {
  	
 // CONFIGURACION DE PELOTAS
  	method configuracionPelota(unaPelota,tiempo,direccion){
- 			if(unaPelota.image() == "pelotaGolf.png"){
+ 		//Delegar a las distintas pelotas, tratar polimórficamente
+ 		if(unaPelota.image() == "pelotaGolf.png"){
+ 			// no deberían usar if, y DELEGARLO a las direcciones. Tratarlas polimórficamente.
+ 			// direccion.elegiPosicion(...)...
+ 			 			
  			if(direccion == arriba)		{unaPelota.posicion(coordenadaPosible.coordAlAzarAbajo())}
 			if(direccion == abajo)		{unaPelota.posicion(coordenadaPosible.coordAlAzarArriba())}
 			if(direccion == izquierda)	{unaPelota.posicion(coordenadaPosible.coordAlAzarDerecha())}
+ 		} else {
+ 			unaPelota.posicion(unaPelota.posicionInicial()) 			
  		}
- 		else
- 			unaPelota.posicion(unaPelota.posicionInicial())
  		game.addVisual(unaPelota)
 		game.onTick(100,"pelotaMoving",{=> unaPelota.moverPara(direccion)})
 		game.schedule(tiempo-100,{=> game.removeVisual(unaPelota)} )
