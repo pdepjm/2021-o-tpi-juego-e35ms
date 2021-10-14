@@ -13,11 +13,13 @@ import wollok.game.*
 
 object texto {
 	
-	method position() = game.center()
+	method position() = game.at(9,12)
 	
 	method text() = "¡Presiona espacio para comenzar!"
 	
 	method textColor() = paleta.blanco()
+	
+	method hacerEfecto() {}
 	
 }
 

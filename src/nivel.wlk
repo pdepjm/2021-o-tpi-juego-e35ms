@@ -10,12 +10,15 @@ object menu
     method configuracionInicial(){
         game.boardGround("Background.png")
         self.configurarTeclas()
+        game.addVisual(texto)
+        
     }
     method configurarTeclas(){
         keyboard.space().onPressDo({self.comenzarJuego()})
     }
     method comenzarJuego(){
-		
+    	
+		game.removeVisual(texto)
         nivel.configuracionInicial()
         nivel.configurarTeclas()
 		nivel.configurarTimers()
