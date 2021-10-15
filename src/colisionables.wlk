@@ -14,6 +14,7 @@ class Pelota inherits Ente {
 	method tinchoACargo() = tinchoACargo
 	method hacerEfecto(capybara){
 		capybara.restarVida(danioProyectil)
+		nivel.configuracionParticula(particulaNegativa)		// 
 	}
 }	
 
@@ -32,6 +33,7 @@ class Alimento inherits Ente {
 											posicion = direccion.proximaPosicion(posicion)}
 	method hacerEfecto(capybara){
 		capybara.aumentarVida(aumentoDeVida)
+		nivel.configuracionParticula(particulaNegativa)		// Cambiar a particula Positiva
 	}
 }
 

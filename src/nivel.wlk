@@ -34,8 +34,7 @@ object nivel {
 		game.addVisual(hud)
 		//game.addVisual(texto) -> En un futuro!
 		game.boardGround("Background.png")
-		game.onCollideDo(carpincho,{elemento => elemento.hacerEfecto(carpincho)
-						self.configuracionParticula(particulaNegativa)}) // ojo acá la configuración debería estar en hacerEfecto.
+		game.onCollideDo(carpincho,{elemento => elemento.hacerEfecto(carpincho)	}) // ojo acá la configuración debería estar en hacerEfecto --> Corregido por lean
 	
 		
 		
