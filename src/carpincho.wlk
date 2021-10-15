@@ -12,7 +12,7 @@ object carpincho inherits Ente(posicion=game.center(),aspecto="carpincho2.png") 
 		if ( nivel.estaHabilitada(direccion.proximaPosicion(posicion)) ){
 			posicion = direccion.proximaPosicion(posicion)
 		}
-		direccion.aspecto(self)		//polimorfismo
+		direccion.cambiarAspecto(self)		//polimorfismo
                                         
     }
     

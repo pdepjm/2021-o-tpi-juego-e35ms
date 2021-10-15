@@ -20,23 +20,23 @@ object direccionesPosibles{
 
 object izquierda {
 	method proximaPosicion(posicionActual) = posicionActual.left(1) 
-	method aspecto(capybara) {	capybara.cambiarAspecto("carpincho2.png")	}	
+	method cambiarAspecto(capybara) {	capybara.cambiarAspecto("carpincho2.png")	}	
 }	
 
 object derecha {
 	method proximaPosicion(posicionActual) = posicionActual.right(1) 
-	method aspecto(capybara) {	capybara.cambiarAspecto("carpincholeft2.png")	}	
+	method cambiarAspecto(capybara) {	capybara.cambiarAspecto("carpincholeft2.png")	}	
 	
 }
 
 object arriba {
 	method proximaPosicion(posicionActual) = posicionActual.up(1) 
-	method aspecto(capybara){}	
+	method cambiarAspecto(capybara){}	
 }
 
 object abajo {
 	method proximaPosicion(posicionActual) = posicionActual.down(1) 
-	method aspecto(capybara){}
+	method cambiarAspecto(capybara){}
 }
 
 
