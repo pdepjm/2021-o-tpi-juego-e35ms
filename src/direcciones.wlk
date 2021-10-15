@@ -15,20 +15,28 @@ object direccionesPosibles{
 	method direccionAlAzar() = direcciones.anyOne()
 }
 
+
+// capaz se podria usar clases en esto ya que aspecto arriba y abajo no hace nada ;(
+
 object izquierda {
 	method proximaPosicion(posicionActual) = posicionActual.left(1) 
-}
+	method aspecto(capybara) {	capybara.cambiarAspecto("carpincho2.png")	}	
+}	
 
 object derecha {
 	method proximaPosicion(posicionActual) = posicionActual.right(1) 
+	method aspecto(capybara) {	capybara.cambiarAspecto("carpincholeft2.png")	}	
+	
 }
 
 object arriba {
 	method proximaPosicion(posicionActual) = posicionActual.up(1) 
+	method aspecto(capybara){}	
 }
 
 object abajo {
 	method proximaPosicion(posicionActual) = posicionActual.down(1) 
+	method aspecto(capybara){}
 }
 
 

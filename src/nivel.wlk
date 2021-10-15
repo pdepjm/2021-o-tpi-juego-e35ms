@@ -29,24 +29,26 @@ object menu
 object nivel {
 	method configuracionInicial(){
 		game.addVisual(carpincho)
+//		carpincho.hitboxes().forEach({ hitbox => game.addVisual(hitbox) })
 		game.addVisual(tinchoMontania)
 		game.addVisual(tinchoCerca)
 		game.addVisual(hud)
-		//game.addVisual(texto) -> En un futuro!
 		game.boardGround("Background.png")
+		
+//		carpincho.hitboxes().forEach({ hitbox => game.onCollideDo(hitbox, {elemento => elemento.hacerEfecto(carpincho)
+//												self.configuracionParticula(particulaNegativa)}) })
+		
 		game.onCollideDo(carpincho,{elemento => elemento.hacerEfecto(carpincho)	}) // ojo acá la configuración debería estar en hacerEfecto --> Corregido por lean
-	
+
 		
 		
 	}
 
 // TECLAS
 	method configurarTeclas(){
-		keyboard.left().onPressDo({ carpincho.moverPara(izquierda)
-			carpincho.cambiarAspecto("carpincho_left.png")}) // la responsabilidad de cambiar el aspecto es del carpincho.
-			// No vale usar if para resolver esto, resuelvan polimórficamente.
-		keyboard.right().onPressDo({ carpincho.moverPara(derecha)
-			carpincho.cambiarAspecto("carpincho.png")})
+		keyboard.left().onPressDo({ carpincho.moverPara(izquierda)}) // la responsabilidad de cambiar el aspecto es del carpincho.-->Corregido por lean
+		keyboard.right().onPressDo({ carpincho.moverPara(derecha) })	// No vale usar if para resolver esto, resuelvan polimórficamente.--> same blda
+		
 		keyboard.up().onPressDo({ carpincho.moverPara(arriba) })
 		keyboard.down().onPressDo({ carpincho.moverPara(abajo) })
 		//keyboard.space().onPressDo({}) --> Presionar barra para empezar juego, un menu
@@ -105,7 +107,7 @@ object nivel {
 		game.onTick(4000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaGolfArriba,4000,abajo)})
 		game.onTick(4000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaGolfAbajo,4000,arriba)})
 		game.onTick(4000,"ConfiguraPelota",{=> self.configuracionPelota(pelotaGolfDerecha,4000,izquierda)})
-		
+		game.onTick(1000,"CountSegundos",  {=> contador.pasarUnSegundo()})
 	}	
 }
 	

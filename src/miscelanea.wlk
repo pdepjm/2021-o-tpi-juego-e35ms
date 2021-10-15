@@ -38,3 +38,21 @@ object hud {
 	method position() = game.at(10,1)
 	method hacerEfecto(capybara){}
 }
+
+// CREAMOS LA HITBOX
+class Hitbox {
+	var posicion = null
+	method image() = "hitbox.png"
+	method position() = posicion
+}
+
+// CREAMOS CONTADOR
+object contador {
+	var tiempo = 30
+	method pasarUnSegundo() { tiempo =- 1 }
+}
+
+//const hitbox1 = new Hitbox(posicion = game.at(carpincho.position().x() , carpincho.position().y()+1))
+//const hitbox2 = new Hitbox(posicion = game.at(carpincho.position().x()+1 , carpincho.position().y()))
+//const hitbox3 = new Hitbox(posicion = game.at(carpincho.position().x()+1 , carpincho.position().y()+1))
+//const hitbox4 = new Hitbox(posicion = carpincho.position())
