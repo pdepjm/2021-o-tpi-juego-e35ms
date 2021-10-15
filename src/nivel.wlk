@@ -8,9 +8,9 @@ import colisionables.*
 object menu
 {
     method configuracionInicial(){
+    	game.addVisual(menu)
         game.boardGround("Background.png")
         self.configurarTeclas()
-        game.addVisual(texto)
         
     }
     method configurarTeclas(){
@@ -18,7 +18,7 @@ object menu
     }
     method comenzarJuego(){
     	
-		game.removeVisual(texto)
+		game.removeVisual(menu)
         nivel.configuracionInicial()
         nivel.configurarTeclas()
 		nivel.configurarTimers()
@@ -30,6 +30,7 @@ object nivel {
 	method configuracionInicial(){
 		game.addVisual(carpincho)
 //		carpincho.hitboxes().forEach({ hitbox => game.addVisual(hitbox) })
+		game.addVisual(contador)
 		game.addVisual(tinchoMontania)
 		game.addVisual(tinchoCerca)
 		game.addVisual(hud)
