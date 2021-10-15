@@ -49,8 +49,8 @@ class Hitbox {
 // CREAMOS CONTADOR
 object contador {
 	var property tiempo = 30
-	method position() = game.at(10,10)
-	method image() = "empty.png"
+	method position() = game.at(1,10)
+	method image() = "relojArena.png"
 	method pasarUnSegundo() {
 		tiempo = tiempo - 1
 		game.say(self,tiempo.toString())
