@@ -5,25 +5,45 @@ import nivel.*
 import miscelanea.*
 
 // MODELAMOS LA CLASE PELOTA
-class Pelota inherits Ente {
-	const tinchoACargo = null
-	const posicionInicial = posicion
+class PelotaGolf inherits Ente {
 	const danioProyectil = 1
 
-	method posicionInicial() = posicionInicial 
-	method tinchoACargo() = tinchoACargo
 	method hacerEfecto(capybara){
 		capybara.restarVida(danioProyectil)
 		nivel.configuracionParticula(particulaNegativa)		// 
 	}
+	method ubicarPosicion(direccion){	posicion = direccion.alAzar()	}
+	method mostrar()				{	game.addVisual(self)			}			
+
+}
+
+class PelotaRugby inherits PelotaGolf(danioProyectil = 2) {
+	const tinchoACargo = null
+	const posicionInicial = posicion
+	
+
+	method posicionInicial() = posicionInicial 
+	
+	method tinchoACargo() = tinchoACargo
+	
+	override method hacerEfecto(capybara){
+		capybara.restarVida(danioProyectil)
+		nivel.configuracionParticula(particulaNegativa)		// acadeberia haber una particula distinta
+	}
+	override method ubicarPosicion(direccion){	posicion = posicionInicial 	} 
+	override method mostrar(){					//usa polimorfismo Lindo para hacer interfaz porq usa al tincho acargo
+		game.addVisual(self)	
+		tinchoACargo.mandarMensaje()
+	
+	}
 }	
 
 // CREAMOS OBJETOS DE LA CLASE PELOTA
-const pelotaMontania = new Pelota(posicion = tinchoMontania.position(),aspecto = "pelotaRugby.png", tinchoACargo = tinchoMontania,danioProyectil = 2)
-const pelotaCerca = new Pelota(posicion = tinchoCerca.position(), tinchoACargo = tinchoCerca, aspecto = "pelotaRugby.png",danioProyectil = 2 )
-const pelotaGolfArriba = new Pelota(posicion = game.at(4,18), tinchoACargo = tinchoCerca, aspecto = "pelotaGolf.png",danioProyectil = 1 )
-const pelotaGolfAbajo = new Pelota(posicion = game.at(13,0), tinchoACargo = tinchoCerca, aspecto = "pelotaGolf.png",danioProyectil = 1 )
-const pelotaGolfDerecha = new Pelota(posicion = game.at(18,9), tinchoACargo = tinchoCerca, aspecto = "pelotaGolf.png",danioProyectil = 1 )
+const pelotaMontania = new PelotaRugby(posicion = tinchoMontania.position(),aspecto = "pelotaRugby.png", tinchoACargo = tinchoMontania,danioProyectil = 2)
+const pelotaCerca = new PelotaRugby(posicion = tinchoCerca.position(), tinchoACargo = tinchoCerca, aspecto = "pelotaRugby.png",danioProyectil = 2 )
+const pelotaGolfArriba = new PelotaGolf(posicion = game.at(4,18), aspecto = "pelotaGolf.png",danioProyectil = 1 )
+const pelotaGolfAbajo = new PelotaGolf(posicion = game.at(13,0),  aspecto = "pelotaGolf.png",danioProyectil = 1 )
+const pelotaGolfDerecha = new PelotaGolf(posicion = game.at(18,9), aspecto = "pelotaGolf.png",danioProyectil = 1 )
 
 // MODELAMOS LA CLASE ALIMENTO
 class Alimento inherits Ente {

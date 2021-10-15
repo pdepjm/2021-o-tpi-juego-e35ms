@@ -4,7 +4,7 @@ import carpincho.*
 import nivel.*
 
 class Ente {
-	var posicion = game.center()
+	var posicion = game.center()		// esto se puede cambiar por property ?? 
 	var aspecto = "questionMarkNull.png"
 
 	method position() = posicion
@@ -15,6 +15,12 @@ class Ente {
 
 // MODELAMOS LA CLASE TINCHO
 class Tincho inherits Ente {
+	var mensajes =["ahi va la ovalada mann", "ojo con la pelota bro" , " cuidado NEVERPONY"]		// se pueden agregar mas mensajes
+	
+	method mandarMensaje(){
+		game.say(self, mensajes.anyOne() )
+		
+	}
 }
 
 // CREAMOS LOS OBJETOS DE LA CLASE TINCHO
@@ -49,7 +55,7 @@ class Hitbox {
 // CREAMOS CONTADOR
 object contador {
 	var property tiempo = 60
-	method position() = game.at(1,10)
+	method position() = game.at(0,10)
 	method image() = "relojArena.png"
 	method pasarUnSegundo() {
 		tiempo = tiempo - 1
