@@ -48,8 +48,19 @@ class Hitbox {
 
 // CREAMOS CONTADOR
 object contador {
-	var tiempo = 30
-	method pasarUnSegundo() { tiempo =- 1 }
+	var property tiempo = 30
+	method position() = game.at(10,10)
+	method image() = "empty.png"
+	method pasarUnSegundo() {
+		tiempo = tiempo - 1
+		game.say(self,tiempo.toString())
+	}
+	method hacerEfecto(capy){}
+}
+
+object menu {
+	method image() = "Menu.png"
+	method position() = game.at(0,0)
 }
 
 //const hitbox1 = new Hitbox(posicion = game.at(carpincho.position().x() , carpincho.position().y()+1))
