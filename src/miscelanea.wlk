@@ -41,29 +41,32 @@ const particulaPositiva = new Particula(aspecto = "hitpositive.png")
 
 // CREAMOS EL HUD
 object hud {
-	method image() = "hud" + ((carpincho.vida() + 1).max(1)).toString() + ".png"
+	var property tiempo = 60
+	var property puntaje = 0
+	method image() = "hud" + carpincho.vida().toString() + ".png"
 	method position() = game.at(10,1)
+	method pasarUnSegundo() {
+		tiempo -= 1
+		//game.say(self,tiempo.toString())
+	}
+	method aumentarPuntaje() {
+		puntaje += 1
+		game.say(self,puntaje.toString())
+}
 	method hacerEfecto(capybara){}
 }
 
-// CREAMOS LA HITBOX
-class Hitbox {
-	var posicion = null
-	method image() = "hitbox.png"
-	method position() = posicion
-}
-
 // CREAMOS CONTADOR
-object contador {
-	var property tiempo = 60
-	method position() = game.at(0,10)
-	method image() = "relojArena.png"
-	method pasarUnSegundo() {
-		tiempo = tiempo - 1
-		game.say(self,tiempo.toString())
-	}
-	method hacerEfecto(capy){}
-}
+//object contador {
+//	var property tiempo = 60
+//	method position() = game.at(0,10)
+//	method image() = "relojArena.png"
+//	method pasarUnSegundo() {
+//		tiempo = tiempo - 1
+//		game.say(self,tiempo.toString())
+//	}
+//	method hacerEfecto(capy){}
+//}
 
 object menu {
 	method image() = "Menu.png"

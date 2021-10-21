@@ -30,7 +30,7 @@ object nivel {
 	method configuracionInicial(){
 		game.addVisual(carpincho)
 //		carpincho.hitboxes().forEach({ hitbox => game.addVisual(hitbox) })
-		game.addVisual(contador)
+//		game.addVisual(contador)
 		game.addVisual(tinchoMontania)
 		game.addVisual(tinchoCerca)
 		game.addVisual(hud)
@@ -114,7 +114,7 @@ object nivel {
 		game.onTick(4000,"ConfigurapelotaGolfArriba",	{=> self.configuracionPelota(pelotaGolfArriba,4000,abajo)})
 		game.onTick(4000,"ConfigurapelotaGolfAbajo",	{=> self.configuracionPelota(pelotaGolfAbajo,4000,arriba)})
 		game.onTick(4000,"ConfigurapelotaGolfDerecha",	{=> self.configuracionPelota(pelotaGolfDerecha,4000,izquierda)})
-		game.onTick(1000,"CountSegundos",  				{=> contador.pasarUnSegundo()})
+		game.onTick(1000,"CountSegundos",  				{=> hud.pasarUnSegundo()})
 	}	
 }
 	
