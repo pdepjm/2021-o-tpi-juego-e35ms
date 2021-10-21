@@ -15,7 +15,7 @@ class Ente {
 
 // MODELAMOS LA CLASE TINCHO
 class Tincho inherits Ente {
-	var mensajes =["ahi va la ovalada mann", "ojo con la pelota bro" , " cuidado NEVERPONY"]		// se pueden agregar mas mensajes
+	var mensajes =["ahi va la ovalada mann", "ojo con la pelota bro" , " cuidado NEVERPONY", "como que no te gusta marama man?"]		// se pueden agregar mas mensajes
 	
 	method mandarMensaje(){
 		game.say(self, mensajes.anyOne() )
@@ -36,6 +36,7 @@ class Particula {
 
 // CREAMOS LOS OBJETOS DE LA CLASE PARTICULA
 const particulaNegativa = new Particula(aspecto = "hitnegative.png")
+const particulaPositiva = new Particula(aspecto = "hitpositive.png")
 
 
 // CREAMOS EL HUD
