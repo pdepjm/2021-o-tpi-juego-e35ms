@@ -54,7 +54,7 @@ class Alimento inherits Ente {
 											posicion = direccion.proximaPosicion(posicion)}
 	method hacerEfecto(capybara){
 		capybara.aumentarVida(aumentoDeVida)
-		nivel.configuracionParticula(particulaNegativa)		// Cambiar a particula Positiva
+		nivel.configuracionParticula(particulaPositiva)		// Cambiar a particula Positiva
 	}
 }
 
