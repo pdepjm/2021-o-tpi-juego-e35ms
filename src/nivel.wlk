@@ -62,33 +62,14 @@ object nivel {
  	
 // CONFIGURACION DE PELOTAS
  	method configuracionPelota(unaPelota,tiempo,direccion){			//direccion indica donde aparece
- 		unaPelota.ubicarPosicion(direccion)
- 	/*
- 		//Delegar a las distintas pelotas, tratar polimórficamente		--> CORREGIDO POR LEAN
- 		if(unaPelota.image() == "pelotaGolf.png"){
- 			// no deberían usar if, y DELEGARLO a las direcciones. Tratarlas polimórficamente.
- 			// direccion.elegiPosicion(...)...
- 			 
- 			if(direccion == arriba)		{unaPelota.posicion(coordenadaPosible.coordAlAzarAbajo())}
-			if(direccion == abajo)		{unaPelota.posicion(coordenadaPosible.coordAlAzarArriba())}
-			if(direccion == izquierda)	{unaPelota.posicion(coordenadaPosible.coordAlAzarDerecha())}
- 		} else {
- 			unaPelota.posicion(unaPelota.posicionInicial()) 			
- 		}
  	
- 	*/
- 		unaPelota.mostrar()//game.addVisual(unaPelota)
+ 		unaPelota.ubicarPosicion(direccion)
+ 		unaPelota.mostrar()		//agrega visual y otras cosas dependiendo la pelota
+ 		
 		game.onTick(100,"pelotaMoving",{=> unaPelota.moverPara(direccion)})
+		
 		game.schedule(tiempo-100,{=> game.removeVisual(unaPelota)} )
 		game.schedule(tiempo-100,{=> game.removeTickEvent("pelotaMoving")} )
-		
-		/*
-		if(game.hasVisual(unaPelota)){
-			game.say(unaPelota.tinchoACargo(), "ahi va la ovalada man")
-		}  else{
-			game.say(tinchoMontania, "NO esta mi pelota") 
-		}	
-		*/	
 	}
 
 // CONFIGURACION DE SANDIAS

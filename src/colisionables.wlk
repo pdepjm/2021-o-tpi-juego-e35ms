@@ -17,21 +17,22 @@ class PelotaGolf inherits Ente {
 
 }
 
-class PelotaRugby inherits PelotaGolf(danioProyectil = 2) {
+class PelotaRugby inherits Ente {
+	const danioProyectil = 2
+	
 	const tinchoACargo = null
 	const posicionInicial = posicion
-	
 
 	method posicionInicial() = posicionInicial 
 	
 	method tinchoACargo() = tinchoACargo
 	
-	override method hacerEfecto(capybara){
+	method hacerEfecto(capybara){
 		capybara.restarVida(danioProyectil)
 		nivel.configuracionParticula(particulaNegativa)		// acadeberia haber una particula distinta
 	}
-	override method ubicarPosicion(direccion){	posicion = posicionInicial 	} 
-	override method mostrar(){					//usa polimorfismo Lindo para hacer interfaz porq usa al tincho acargo
+	method ubicarPosicion(direccion){	posicion = posicionInicial 	} 
+	method mostrar(){					//usa polimorfismo Lindo para hacer interfaz porq usa al tincho acargo
 		game.addVisual(self)	
 		tinchoACargo.mandarMensaje()
 	

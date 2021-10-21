@@ -7,11 +7,7 @@ object coordenadaPosible{
 	//method coordAlAzar(direccion){
 	//	return direccion.AlAzar()
 	//}
-	/* method coordAlAzarArriba() = game.at(self.alAzar(2,14),18)
-	 * method coordAlAzarAbajo() = game.at(self.alAzar(2,14),0)
-	 * method coordAlAzarDerecha() = game.at(18,self.alAzar(2,14))
-	 * 
-	 */
+
 }
 
 object direccionesPosibles{
