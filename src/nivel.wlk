@@ -61,7 +61,7 @@ object nivel {
  	}
  	
 // CONFIGURACION DE PELOTAS
- 	method configuracionPelota(unaPelota,tiempo,direccion){
+ 	method configuracionPelota(unaPelota,tiempo,direccion){			//direccion indica donde aparece
  		unaPelota.ubicarPosicion(direccion)
  	/*
  		//Delegar a las distintas pelotas, tratar polimórficamente		--> CORREGIDO POR LEAN
@@ -109,7 +109,7 @@ object nivel {
 	method configurarTimers(){
 		game.onTick(6000,"sandiaAppearing",				{=> self.configuracionAlimento(sandia)})
 		game.onTick(6000,"mateAppearing"  ,				{=> self.configuracionAlimento(mate)})
-		game.onTick(3000,"ConfiguraPelotaMontania",		{=> self.configuracionPelota(pelotaMontania,3000,derecha)})
+		game.onTick(3000,"ConfiguraPelotaMontania",		{=> self.configuracionPelota(pelotaMontania,3000,derecha)})	
 		game.onTick(4000,"ConfiguraPelotaCerca",		{=> self.configuracionPelota(pelotaCerca,4000,derecha)})
 		game.onTick(4000,"ConfigurapelotaGolfArriba",	{=> self.configuracionPelota(pelotaGolfArriba,4000,abajo)})
 		game.onTick(4000,"ConfigurapelotaGolfAbajo",	{=> self.configuracionPelota(pelotaGolfAbajo,4000,arriba)})

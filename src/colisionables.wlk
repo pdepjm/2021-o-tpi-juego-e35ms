@@ -12,7 +12,7 @@ class PelotaGolf inherits Ente {
 		capybara.restarVida(danioProyectil)
 		nivel.configuracionParticula(particulaNegativa)		// 
 	}
-	method ubicarPosicion(direccion){	posicion = direccion.alAzar()	}
+	method ubicarPosicion(direccion){	posicion = direccion.spawnAlAzar()	}
 	method mostrar()				{	game.addVisual(self)			}			
 
 }

@@ -26,7 +26,7 @@ object direccionesPosibles{
 object izquierda {
 	method proximaPosicion(posicionActual) = posicionActual.left(1) 
 	method cambiarAspecto(capybara) {	capybara.cambiarAspecto("carpincho2.png")	}	
-	method alAzar(){ 
+	method spawnAlAzar(){ 
 		return game.at(18,coordenadaPosible.alAzar(2,14))
 	}
 
@@ -35,7 +35,7 @@ object izquierda {
 object derecha {
 	method proximaPosicion(posicionActual) = posicionActual.right(1) 
 	method cambiarAspecto(capybara) {	capybara.cambiarAspecto("carpincholeft2.png")	}	
-	method alAzar(){ 
+	method spawnAlAzar(){ 
 		return game.at(0,coordenadaPosible.alAzar(2,14))	
 	}
 }
@@ -43,7 +43,7 @@ object derecha {
 object arriba {
 	method proximaPosicion(posicionActual) = posicionActual.up(1) 
 	method cambiarAspecto(capybara){}	
-	method alAzar(){ 
+	method spawnAlAzar(){ 
 		return game.at(coordenadaPosible.alAzar(2,14),0)	
 	}
 
@@ -52,7 +52,7 @@ object arriba {
 object abajo {
 	method proximaPosicion(posicionActual) = posicionActual.down(1) 
 	method cambiarAspecto(capybara){}
-	method alAzar(){ 
+	method spawnAlAzar(){ 
 		return game.at(coordenadaPosible.alAzar(2,14),18)
 	}
 
