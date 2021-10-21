@@ -48,7 +48,7 @@ const pelotaGolfDerecha = new PelotaGolf(posicion = game.at(18,9), aspecto = "pe
 
 // MODELAMOS LA CLASE ALIMENTO
 class Alimento inherits Ente {
-	const aumentoDeVida = null
+	const aumentoDeVida = 0
 
 	override method moverPara(direccion) {     if ( nivel.estaHabilitada(direccion.proximaPosicion(posicion)) )
 											posicion = direccion.proximaPosicion(posicion)}
@@ -58,6 +58,12 @@ class Alimento inherits Ente {
 	}
 }
 
+object mate inherits Alimento(aspecto="mate.png") {
+	override method hacerEfecto(capybara){
+		capybara.sumarPuntaje()
+	}
+}
+
 // CREAMOS LOS OBJETOS DE LA CLASE ALIMENTO
 const sandia = new Alimento(aspecto = "sandiaLoca.png",aumentoDeVida = 1)
-const mate = new Alimento(aspecto = "mate.png",aumentoDeVida = 0) // El mate será un Alimento que use herencia ya que será igual que la sandia pero se agregaria un metodo "contador" que sume los mates 
+//const mate = new Alimento(aspecto = "mate.png",aumentoDeVida = 0) // El mate será un Alimento que use herencia ya que será igual que la sandia pero se agregaria un metodo "contador" que sume los mates 
