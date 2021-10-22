@@ -20,7 +20,10 @@ object carpincho inherits Ente(posicion=game.center(),aspecto="carpincho2.png") 
 	method aumentarVida(cuanta) 		{	vida = (vida + cuanta).min(3)	}
 	method estaMuerto()					{	return vida == 0				}	
 	method cambiarAspecto(nuevoAspecto) {	aspecto = nuevoAspecto			}
+
 	//method hacerEfecto(capy)			{  									}
-	method sumarPuntaje() 				{   puntaje += 1 					}
+	method sumarPuntaje() 				{   hud.aumentarPuntaje() 			}
 	method puntaje()					{	return puntaje					}
+	method reiniciarValores()			{	self.vida(3) 					}
+
 }

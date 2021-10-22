@@ -23,7 +23,7 @@ object menu{
         nivel.configuracionInicial()
         nivel.configurarTeclas()
 		nivel.configurarTimers()
-		game.schedule(10000 , nivel.configurarFin() )
+		game.schedule(10000 , { nivel.configurarFin() })
     }
 }
 
@@ -31,7 +31,7 @@ object nivel {
 	method configuracionInicial(){
 		game.addVisual(carpincho)
 //		carpincho.hitboxes().forEach({ hitbox => game.addVisual(hitbox) })
-		game.addVisual(contador)
+//		game.addVisual(contador)
 		game.addVisual(tinchoMontania)
 		game.addVisual(tinchoCerca)
 		game.addVisual(hud)
@@ -97,30 +97,22 @@ object nivel {
 		game.onTick(4000,"ConfigurapelotaGolfArriba",	{=> self.configuracionPelota(pelotaGolfArriba,4000,abajo)})
 		game.onTick(4000,"ConfigurapelotaGolfAbajo",	{=> self.configuracionPelota(pelotaGolfAbajo,4000,arriba)})
 		game.onTick(4000,"ConfigurapelotaGolfDerecha",	{=> self.configuracionPelota(pelotaGolfDerecha,4000,izquierda)})
-		game.onTick(1000,"CountSegundos",  				{=> contador.pasarUnSegundo()})
+		game.onTick(1000,"CountSegundos",  				{=> hud.pasarUnSegundo()})
 	}	
 	
 	method configurarFin(){
-							  game.clear() 
-							  game.addVisual(menuImagen)
-							  game.addVisual(textoFin)
-							  menu.configurarTeclas()
-							  keyboard.space().onPressDo({ game.removeVisual(textoFin) 
-							  							menu.configuracionInicial()
-							  							}
-							  	)
+		game.clear() 
+		game.addVisual(menuImagen)
+		game.addVisual(textoFin)
+		 menu.configurarTeclas()
+		keyboard.space().onPressDo({ game.removeVisual(textoFin) 
+		  							menu.configuracionInicial()	})
 							  
 	}
-						
-					 
-		
-
-	
-	
+							
 	method reiniciarValores(){
-		contador.tiempo(60)
-		carpincho.vida(3)
-		carpincho.puntaje(0)
+		hud.reiniciarValores()
+		carpincho.reiniciarValores()
 	}
 }
 
