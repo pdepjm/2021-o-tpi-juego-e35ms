@@ -5,12 +5,13 @@ import texto.*
 import miscelanea.*
 import colisionables.*
 
-object menu
-{
+object menu{
+	
     method configuracionInicial(){
-    	game.addVisual(menu)
+    	game.addVisual(menuImagen)
         game.boardGround("Background.png")
         self.configurarTeclas()
+
         
     }
     method configurarTeclas(){
@@ -18,11 +19,11 @@ object menu
     }
     method comenzarJuego(){
     	
-		game.removeVisual(menu)
+		game.removeVisual(menuImagen)
         nivel.configuracionInicial()
         nivel.configurarTeclas()
 		nivel.configurarTimers()
-
+		game.schedule(10000 , nivel.configurarFin() )
     }
 }
 
@@ -35,6 +36,7 @@ object nivel {
 		game.addVisual(tinchoCerca)
 		game.addVisual(hud)
 		game.boardGround("Background.png")
+		self.reiniciarValores()
 		
 //		carpincho.hitboxes().forEach({ hitbox => game.onCollideDo(hitbox, {elemento => elemento.hacerEfecto(carpincho)
 //												self.configuracionParticula(particulaNegativa)}) })
@@ -97,7 +99,31 @@ object nivel {
 		game.onTick(4000,"ConfigurapelotaGolfDerecha",	{=> self.configuracionPelota(pelotaGolfDerecha,4000,izquierda)})
 		game.onTick(1000,"CountSegundos",  				{=> contador.pasarUnSegundo()})
 	}	
+	
+	method configurarFin(){
+							  game.clear() 
+							  game.addVisual(menuImagen)
+							  game.addVisual(textoFin)
+							  menu.configurarTeclas()
+							  keyboard.space().onPressDo({ game.removeVisual(textoFin) 
+							  							menu.configuracionInicial()
+							  							}
+							  	)
+							  
+	}
+						
+					 
+		
+
+	
+	
+	method reiniciarValores(){
+		contador.tiempo(60)
+		carpincho.vida(3)
+		carpincho.puntaje(0)
+	}
 }
+
 	
 
 

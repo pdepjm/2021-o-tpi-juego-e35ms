@@ -6,7 +6,7 @@ import nivel.*
 
 object carpincho inherits Ente(posicion=game.center(),aspecto="carpincho2.png") {
 	var property vida = 3
-	var puntaje = 0
+	var property puntaje = 0
 	override method moverPara(direccion) 
 	{		
 		if ( nivel.estaHabilitada(direccion.proximaPosicion(posicion)) ){
@@ -20,6 +20,7 @@ object carpincho inherits Ente(posicion=game.center(),aspecto="carpincho2.png") 
 	method aumentarVida(cuanta) 		{	vida = (vida + cuanta).min(3)	}
 	method estaMuerto()					{	return vida == 0				}	
 	method cambiarAspecto(nuevoAspecto) {	aspecto = nuevoAspecto			}
-	method hacerEfecto(capy)			{  									}
+	//method hacerEfecto(capy)			{  									}
 	method sumarPuntaje() 				{   puntaje += 1 					}
+	method puntaje()					{	return puntaje					}
 }

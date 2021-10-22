@@ -65,11 +65,18 @@ object contador {
 	method hacerEfecto(capy){}
 }
 
-object menu {
+object menuImagen {
 	method image() = "Menu.png"
 	method position() = game.at(0,0)
 }
 
+// lo agrego lean ! 
+object textoFin {
+	method position() = game.center()
+
+	method text() =  "Su puntaje fue " + carpincho.puntaje() + "¡Presiona espacio para comenzar!"
+
+}
 //const hitbox1 = new Hitbox(posicion = game.at(carpincho.position().x() , carpincho.position().y()+1))
 //const hitbox2 = new Hitbox(posicion = game.at(carpincho.position().x()+1 , carpincho.position().y()))
 //const hitbox3 = new Hitbox(posicion = game.at(carpincho.position().x()+1 , carpincho.position().y()+1))
