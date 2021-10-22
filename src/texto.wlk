@@ -1,4 +1,5 @@
 import wollok.game.*
+import miscelanea.*
 
 // ¡Los visuales también pueden ser texto!
 // Hay que definir la posición en la que debe aparecer
@@ -21,6 +22,15 @@ object texto {
 	
 	method hacerEfecto() {}
 	
+}
+
+object textoFin {
+	method position() = game.center()
+
+	method text() =  "Su puntaje fue " + hud.puntaje() + "¡Buen intento!"
+	
+	method textColor() = paleta.blanco()
+
 }
 
 object paleta {

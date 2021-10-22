@@ -104,7 +104,7 @@ object nivel {
 		game.clear() 
 		game.addVisual(menuImagen)
 		game.addVisual(textoFin)
-		 menu.configurarTeclas()
+		menu.configurarTeclas()
 		keyboard.space().onPressDo({ game.removeVisual(textoFin) 
 		  							menu.configuracionInicial()	})
 							  

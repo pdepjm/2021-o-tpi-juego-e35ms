@@ -15,7 +15,7 @@ class Ente {
 
 // MODELAMOS LA CLASE TINCHO
 class Tincho inherits Ente {
-	var mensajes =["ahi va la ovalada mann", "ojo con la pelota bro" , " cuidado NEVERPONY", "como que no te gusta marama man?"]		// se pueden agregar mas mensajes
+	var mensajes =["ahi va la ovalada mann", "ojo con la pelota bro" , " cuidado NEVERPONY", "te gusta marama man?"]		// se pueden agregar mas mensajes
 	
 	method mandarMensaje(){
 		game.say(self, mensajes.anyOne() )
@@ -53,8 +53,8 @@ object hud {
 		puntaje += 1
 		game.say(self,puntaje.toString())
 }
-	method hacerEfecto(capybara){}
-	method reiniciarValores(){ self.puntaje(0) self.tiempo(60)	}
+	method hacerEfecto(capybara) {}
+	method reiniciarValores() { self.puntaje(0) self.tiempo(60) }
 }
 
 // CREAMOS CONTADOR
@@ -74,13 +74,6 @@ object menuImagen {
 	method position() = game.at(0,0)
 }
 
-// lo agrego lean ! 
-object textoFin {
-	method position() = game.center()
-
-	method text() =  "Su puntaje fue " + hud.puntaje() + "¡Presiona espacio para comenzar!"
-
-}
 //const hitbox1 = new Hitbox(posicion = game.at(carpincho.position().x() , carpincho.position().y()+1))
 //const hitbox2 = new Hitbox(posicion = game.at(carpincho.position().x()+1 , carpincho.position().y()))
 //const hitbox3 = new Hitbox(posicion = game.at(carpincho.position().x()+1 , carpincho.position().y()+1))
