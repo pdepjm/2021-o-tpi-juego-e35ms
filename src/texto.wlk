@@ -16,7 +16,7 @@ object texto {
 	
 	method position() = game.at(9,12)
 	
-	method text() = "¡Presiona espacio para comenzar!"
+	method text() = "¡Presiona ENTER para volver a inicio!"
 	
 	method textColor() = paleta.blanco()
 	
@@ -25,7 +25,7 @@ object texto {
 }
 
 object textoFin {
-	method position() = game.center()
+	method position() = game.at(9,8)
 
 	method text() =  "Su puntaje fue " + hud.puntaje() + "¡Buen intento!"
 	

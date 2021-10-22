@@ -23,7 +23,7 @@ object menu{
         nivel.configuracionInicial()
         nivel.configurarTeclas()
 		nivel.configurarTimers()
-		game.schedule(10000 , { nivel.configurarFin() })
+		game.schedule(10000 , { menuFinal.configurarFin() })
     }
 }
 
@@ -100,15 +100,7 @@ object nivel {
 		game.onTick(1000,"CountSegundos",  				{=> hud.pasarUnSegundo()})
 	}	
 	
-	method configurarFin(){
-		game.clear() 
-		game.addVisual(menuImagen)
-		game.addVisual(textoFin)
-		menu.configurarTeclas()
-		keyboard.space().onPressDo({ game.removeVisual(textoFin) 
-		  							menu.configuracionInicial()	})
-							  
-	}
+
 							
 	method reiniciarValores(){
 		hud.reiniciarValores()
@@ -116,7 +108,19 @@ object nivel {
 	}
 }
 
-	
+
+object menuFinal{
+	method configurarFin(){
+		game.clear() 
+		game.addVisual(texto)		// se puede cambiar agregando otro fondo con addVisual
+		game.addVisual(textoFin)
+		menu.configurarTeclas()
+		keyboard.enter().onPressDo({ game.removeVisual(textoFin)
+									game.removeVisual(texto) 
+		  							menu.configuracionInicial()	})
+							  
+	}
+}
 
 
 
