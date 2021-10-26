@@ -5,39 +5,37 @@ import nivel.*
 import miscelanea.*
 
 // MODELAMOS LA CLASE PELOTA
-class PelotaGolf inherits Ente {
-	const danioProyectil = 1
 
-	method hacerEfecto(capybara){
-		capybara.restarVida(danioProyectil)
-		nivel.configuracionParticula(particulaNegativa)		// 
-	}
-	method ubicarPosicion(direccion){	posicion = direccion.spawnAlAzar()	}
-	method mostrar()				{	game.addVisual(self)			}			
-
+class Pelota inherits Ente{
+    var property danioProyectil = 1    
+        
+    method hacerEfecto(capybara){
+        capybara.restarVida(danioProyectil)
+        nivel.configuracionParticula(particulaNegativa)    
+    }
+    method mostrar()                {    game.addVisual(self)            }        
 }
 
-class PelotaRugby inherits Ente {
-	const danioProyectil = 2
-	
-	const tinchoACargo = null
-	const posicionInicial = posicion
+class PelotaGolf inherits Pelota{
+    method ubicarPosicion(direccion){    posicion = direccion.spawnAlAzar()    }
+    
+}
 
-	method posicionInicial() = posicionInicial 
-	
-	method tinchoACargo() = tinchoACargo
-	
-	method hacerEfecto(capybara){
-		capybara.restarVida(danioProyectil)
-		nivel.configuracionParticula(particulaNegativa)		// acadeberia haber una particula distinta
-	}
-	method ubicarPosicion(direccion){	posicion = posicionInicial 	} 
-	method mostrar(){					//usa polimorfismo Lindo para hacer interfaz porq usa al tincho acargo
-		game.addVisual(self)	
-		tinchoACargo.mandarMensaje()
-	
-	}
-}	
+class PelotaRugby inherits Pelota(danioProyectil = 2){
+    const property tinchoACargo = null
+    const posicionInicial = posicion
+    
+    method posicionInicial() = posicionInicial 
+    
+    method ubicarPosicion(_){    posicion = posicionInicial     } 
+    
+    override method mostrar(){                    //usa polimorfismo Lindo para hacer interfaz porq usa al tincho acargo
+        super()                  // no uso super porq se acopla con la imagen de clase superior     
+        tinchoACargo.mandarMensaje()
+    }
+    
+}
+
 
 // CREAMOS OBJETOS DE LA CLASE PELOTA
 const pelotaMontania = new PelotaRugby(posicion = tinchoMontania.position(),aspecto = "pelotaRugby.png", tinchoACargo = tinchoMontania,danioProyectil = 2)
