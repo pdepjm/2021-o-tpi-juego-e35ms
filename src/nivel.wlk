@@ -63,12 +63,12 @@ object nivel {
  	}
  	
 // CONFIGURACION DE PELOTAS
- 	method configuracionPelota(unaPelota,tiempo,direccion){			//direccion indica donde aparece
+ 	method configuracionPelota(unaPelota,tiempo,direccion,velocidad){			//direccion indica donde aparece, la velocidad default era 100
  	
  		unaPelota.ubicarPosicion(direccion)
  		unaPelota.mostrar()		//agrega visual y otras cosas dependiendo la pelota
  		
-		game.onTick(100,"pelotaMoving",{=> unaPelota.moverPara(direccion)})
+		game.onTick(velocidad,"pelotaMoving",{=> unaPelota.moverPara(direccion)})
 		
 		game.schedule(tiempo-100,{=> game.removeVisual(unaPelota)} )
 		game.schedule(tiempo-100,{=> game.removeTickEvent("pelotaMoving")} )
@@ -92,14 +92,14 @@ object nivel {
 	method configurarTimers(){
 		game.onTick(6000,"sandiaAppearing",				{=> self.configuracionAlimento(sandia)})
 		game.onTick(6000,"mateAppearing"  ,				{=> self.configuracionAlimento(mate)})
-		game.onTick(3000,"ConfiguraPelotaMontania",		{=> self.configuracionPelota(pelotaMontania,3000,derecha)})	
-		game.onTick(4000,"ConfiguraPelotaCerca",		{=> self.configuracionPelota(pelotaCerca,4000,derecha)})
-		game.onTick(4000,"ConfigurapelotaGolfArriba",	{=> self.configuracionPelota(pelotaGolfArriba,4000,abajo)})
-		game.onTick(4000,"ConfigurapelotaGolfAbajo",	{=> self.configuracionPelota(pelotaGolfAbajo,4000,arriba)})
-		game.onTick(4000,"ConfigurapelotaGolfDerecha",	{=> self.configuracionPelota(pelotaGolfDerecha,4000,izquierda)})
+		game.onTick(3000,"ConfiguraPelotaMontania",		{=> self.configuracionPelota(pelotaMontania,3000,derecha,100)})	
+		game.onTick(4000,"ConfiguraPelotaCerca",		{=> self.configuracionPelota(pelotaCerca,4000,derecha,100)})
+		game.onTick(4000,"ConfigurapelotaGolfArriba",	{=> self.configuracionPelota(pelotaGolfArriba,4000,abajo,100)})
+		game.onTick(4000,"ConfigurapelotaGolfAbajo",	{=> self.configuracionPelota(pelotaGolfAbajo,4000,arriba,100)})
+		game.onTick(4000,"ConfigurapelotaGolfDerecha",	{=> self.configuracionPelota(pelotaGolfDerecha,4000,izquierda,100)})
 		game.onTick(1000,"CountSegundos",  				{=> hud.pasarUnSegundo()})
-		game.schedule(12000,{=> game.onTick(4000,"ConfigurapelotaGolfDerecha2", {=> self.configuracionPelota(pelotaGolfDerecha2,4000,izquierda)})} ) // --> Aumentar cantidad de pelotas para aumentar dificultad BETA lean no te enojes
-		game.schedule(16000,{=> game.onTick(4000,"ConfigurapelotaGolfArriba2",	{=> self.configuracionPelota(pelotaGolfArriba2,4000,abajo)})} ) // --> Aumentar cantidad de pelotas para aumentar dificultad BETA lean no te enojes
+		game.schedule(12000,{=> game.onTick(4000,"ConfigurapelotaGolfDerecha2", {=> self.configuracionPelota(pelotaGolfDerecha2,4000,izquierda,75)})} ) // --> Aumentar cantidad de pelotas para aumentar dificultad BETA lean no te enojes
+		game.schedule(16000,{=> game.onTick(4000,"ConfigurapelotaGolfArriba2",	{=> self.configuracionPelota(pelotaGolfArriba2,4000,abajo,50)})} ) // --> Aumentar cantidad de pelotas para aumentar dificultad BETA lean no te enojes
 	}	
 
 // CONFIGURACION DE REINICIAR NIVEL 						
