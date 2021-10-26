@@ -12,13 +12,30 @@ import miscelanea.*
 // Les dejamos algunos ejemplos
 // ¡También se puede combinar con las imágenes!
 
-object texto {
+object golpe {
 	
 	method position() = game.at(9,12)
 	
-	method text() = "¡Presiona ENTER para volver a inicio!"
+	method text() = "Has recibido muchos golpes y el carpincho esta llorando :(
+
+¡Presiona ENTER para volver a inicio!"
 	
 	method textColor() = paleta.blanco()
+	
+	method hacerEfecto() {}
+	
+}
+
+object tiempo {
+	
+	method position() = game.at(9,12)
+	
+	method text() = "Se te acabo el tiempo! y a pincho lo llamaron para cenar ;(
+
+¡Presiona ENTER para volver a inicio!"
+	
+	
+		method textColor() = paleta.blanco()
 	
 	method hacerEfecto() {}
 	

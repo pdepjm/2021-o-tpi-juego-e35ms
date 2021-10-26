@@ -98,7 +98,7 @@ object nivel {
 		game.onTick(4000,"ConfigurapelotaGolfAbajo",	{=> self.configuracionPelota(pelotaGolfAbajo,4000,arriba)})
 		game.onTick(4000,"ConfigurapelotaGolfDerecha",	{=> self.configuracionPelota(pelotaGolfDerecha,4000,izquierda)})
 		game.onTick(1000,"CountSegundos",  				{=> hud.pasarUnSegundo()})
-		game.schedule(12000,{=> game.onTick(4000,"ConfigurapelotaGolfDerecha2", {self.configuracionPelota(pelotaGolfDerecha2,4000,izquierda)})} ) // --> Aumentar cantidad de pelotas para aumentar dificultad BETA lean no te enojes
+		game.schedule(12000,{=> game.onTick(4000,"ConfigurapelotaGolfDerecha2", {=> self.configuracionPelota(pelotaGolfDerecha2,4000,izquierda)})} ) // --> Aumentar cantidad de pelotas para aumentar dificultad BETA lean no te enojes
 		game.schedule(16000,{=> game.onTick(4000,"ConfigurapelotaGolfArriba2",	{=> self.configuracionPelota(pelotaGolfArriba2,4000,abajo)})} ) // --> Aumentar cantidad de pelotas para aumentar dificultad BETA lean no te enojes
 	}	
 
@@ -111,13 +111,13 @@ object nivel {
 
 // CONFIGURAR MENU 
 object menuFinal {
-	method configurarFin(){
+	method configurarFin(causa){
 		game.clear() 
-		game.addVisual(texto)		// se puede cambiar agregando otro fondo con addVisual
+		game.addVisual(causa)		// se puede cambiar agregando otro fondo con addVisual
 		game.addVisual(textoFin)
 		menu.configurarTeclas()
 		keyboard.enter().onPressDo({ game.removeVisual(textoFin)
-									game.removeVisual(texto) 
+									game.removeVisual(causa) 
 		  							menu.configuracionInicial()	})
 							  
 	}

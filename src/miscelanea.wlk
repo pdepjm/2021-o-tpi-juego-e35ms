@@ -2,6 +2,7 @@ import wollok.game.*
 import direcciones.*
 import carpincho.*
 import nivel.*
+import texto.*
 
 class Ente {
 	var posicion = game.center()		// esto se puede cambiar por property ?? 
@@ -41,13 +42,13 @@ const particulaPositiva = new Particula(aspecto = "hitpositive.png")
 
 // CREAMOS EL HUD
 object hud {
-	var property tiempo = 60
+	var property tiempoReloj = 60
 	var property puntaje = 0
 	method image() = "hud" + carpincho.vida().toString() + ".png"
 	method position() = game.at(10,1)
 	method pasarUnSegundo() {
-		tiempo -= 1
-		if(tiempo == 0){carpincho.perder()}
+		tiempoReloj -= 1
+		if(tiempoReloj == 0){carpincho.perderPor(tiempo)}
 		//game.say(self,tiempo.toString())
 	}
 	method aumentarPuntaje() {
@@ -55,7 +56,7 @@ object hud {
 		game.say(self,puntaje.toString())
 }
 	method hacerEfecto(capybara) {}
-	method reiniciarValores() { self.puntaje(0) self.tiempo(60) }
+	method reiniciarValores() { self.puntaje(0) self.tiempoReloj(60) }
 }
 
 // CREAMOS CONTADOR

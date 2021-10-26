@@ -2,7 +2,7 @@ import wollok.game.*
 import miscelanea.*
 import nivel.*
 import colisionables.*
-
+import texto.*
 
 // MODELAMOS NUESTRO PROTAGONISTA (ES UNICO)
 
@@ -22,11 +22,11 @@ object carpincho inherits EnteDentroDelMargen(posicion=game.center(),aspecto="ca
 	//method hacerEfecto(capy)			{  									}
 	method sumarPuntaje() 				{   hud.aumentarPuntaje() 			}
 	method reiniciarValores()			{	self.vida(3) 					}
-	method perder()						{	menuFinal.configurarFin()		}
+	method perderPor(causa)				{	menuFinal.configurarFin(causa)}
 	
 	method restarVida(cuanta) 			{	vida = (vida - cuanta).max(0)	
-											if(vida == 0){ 
-												self.perder()
+											if(self.estaMuerto()){ 
+												self.perderPor(golpe)
 											}
 	}
 }
