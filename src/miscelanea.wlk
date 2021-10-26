@@ -47,6 +47,7 @@ object hud {
 	method position() = game.at(10,1)
 	method pasarUnSegundo() {
 		tiempo -= 1
+		if(tiempo == 0){carpincho.perder()}
 		//game.say(self,tiempo.toString())
 	}
 	method aumentarPuntaje() {

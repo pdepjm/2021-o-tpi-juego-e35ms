@@ -44,12 +44,20 @@ const pelotaGolfArriba = new PelotaGolf(posicion = game.at(4,18), aspecto = "pel
 const pelotaGolfAbajo = new PelotaGolf(posicion = game.at(13,0),  aspecto = "pelotaGolf.png",danioProyectil = 1 )
 const pelotaGolfDerecha = new PelotaGolf(posicion = game.at(18,9), aspecto = "pelotaGolf.png",danioProyectil = 1 )
 
+
+class EnteDentroDelMargen inherits Ente{	// clase que sirve para elementos dentro del margen por el cual se puede mover
+	
+	override method moverPara(direccion) {    
+		 if (nivel.estaHabilitada(direccion.proximaPosicion(posicion)) )
+			posicion = direccion.proximaPosicion(posicion)
+	}
+}
+
+
 // MODELAMOS LA CLASE ALIMENTO
-class Alimento inherits Ente {
+class Alimento inherits EnteDentroDelMargen {
 	const aumentoDeVida = 0
 
-	override method moverPara(direccion) {     if ( nivel.estaHabilitada(direccion.proximaPosicion(posicion)) )
-											posicion = direccion.proximaPosicion(posicion)}
 	method hacerEfecto(capybara){
 		capybara.aumentarVida(aumentoDeVida)
 		nivel.configuracionParticula(particulaPositiva)		// Cambiar a particula Positiva
@@ -57,7 +65,8 @@ class Alimento inherits Ente {
 }
 
 object mate inherits Alimento(aspecto="mate.png") {
-	override method hacerEfecto(capybara){
+	
+	override method hacerEfecto(capybara){		
 		capybara.sumarPuntaje()
 	}
 }

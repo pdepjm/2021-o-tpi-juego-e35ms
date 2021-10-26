@@ -23,7 +23,6 @@ object menu{
         nivel.configuracionInicial()
         nivel.configurarTeclas()
 		nivel.configurarTimers()
-		game.schedule(10000 , { menuFinal.configurarFin() })
     }
 }
 
