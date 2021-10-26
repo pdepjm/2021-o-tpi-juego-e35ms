@@ -48,7 +48,7 @@ object hud {
 	method position() = game.at(10,1)
 	method pasarUnSegundo() {
 		tiempoReloj -= 1
-		if(tiempoReloj == 0){carpincho.perderPor(tiempo)}
+		if(tiempoReloj == 0){carpincho.perder(porTiempo)}
 		//game.say(self,tiempo.toString())
 	}
 	method aumentarPuntaje() {
@@ -58,18 +58,6 @@ object hud {
 	method hacerEfecto(capybara) {}
 	method reiniciarValores() { self.puntaje(0) self.tiempoReloj(60) }
 }
-
-// CREAMOS CONTADOR
-//object contador {
-//	var property tiempo = 60
-//	method position() = game.at(0,10)
-//	method image() = "relojArena.png"
-//	method pasarUnSegundo() {
-//		tiempo = tiempo - 1
-//		game.say(self,tiempo.toString())
-//	}
-//	method hacerEfecto(capy){}
-//}
 
 object menuImagen {
 	method image() = "Menu.png"

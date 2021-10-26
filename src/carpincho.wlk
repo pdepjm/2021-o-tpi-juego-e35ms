@@ -22,11 +22,11 @@ object carpincho inherits EnteDentroDelMargen(posicion=game.center(),aspecto="ca
 	//method hacerEfecto(capy)			{  									}
 	method sumarPuntaje() 				{   hud.aumentarPuntaje() 			}
 	method reiniciarValores()			{	self.vida(3) 					}
-	method perderPor(causa)				{	menuFinal.configurarFin(causa)}
+	method perder(porCausa)				{	menuFinal.configurarFin(porCausa)}
 	
 	method restarVida(cuanta) 			{	vida = (vida - cuanta).max(0)	
 											if(self.estaMuerto()){ 
-												self.perderPor(golpe)
+												self.perder(porGolpe)
 											}
 	}
 }

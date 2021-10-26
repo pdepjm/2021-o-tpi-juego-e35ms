@@ -111,13 +111,13 @@ object nivel {
 
 // CONFIGURAR MENU 
 object menuFinal {
-	method configurarFin(causa){
+	method configurarFin(porCausa){
 		game.clear() 
-		game.addVisual(causa)		// se puede cambiar agregando otro fondo con addVisual
+		game.addVisual(porCausa)		// se puede cambiar agregando otro fondo con addVisual
 		game.addVisual(textoFin)
 		menu.configurarTeclas()
 		keyboard.enter().onPressDo({ game.removeVisual(textoFin)
-									game.removeVisual(causa) 
+									game.removeVisual(porCausa) 
 		  							menu.configuracionInicial()	})
 							  
 	}

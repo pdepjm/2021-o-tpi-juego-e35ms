@@ -12,7 +12,7 @@ import miscelanea.*
 // Les dejamos algunos ejemplos
 // ¡También se puede combinar con las imágenes!
 
-object golpe {
+object porGolpe {
 	
 	method position() = game.at(9,12)
 	
@@ -26,7 +26,7 @@ object golpe {
 	
 }
 
-object tiempo {
+object porTiempo {
 	
 	method position() = game.at(9,12)
 	
