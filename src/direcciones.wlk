@@ -40,7 +40,7 @@ object arriba {
 	method proximaPosicion(posicionActual) = posicionActual.up(1) 
 	method cambiarAspecto(capybara){}	
 	method spawnAlAzar(){ 
-		return game.at(coordenadaPosible.alAzar(2,14),0)	
+		return game.at(coordenadaPosible.alAzar(2,14),0)
 	}
 
 }

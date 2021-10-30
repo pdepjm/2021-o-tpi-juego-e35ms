@@ -66,10 +66,10 @@ class Alimento inherits EnteDentroDelMargen {
 	}
 }
 
-object mate inherits Alimento(aspecto="mate.png") {
+object mate inherits EnteDentroDelMargen(aspecto="mate.png") {
 	
-	override method hacerEfecto(capybara){		
-		capybara.sumarPuntaje()
+	method hacerEfecto(capybara){		
+		hud.aumentarPuntaje()
 	}
 }
 

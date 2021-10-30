@@ -8,7 +8,6 @@ import texto.*
 
 object carpincho inherits EnteDentroDelMargen(posicion=game.center(),aspecto="carpincho2.png") {
 	var property vida = 3
-	var property puntaje = 0
 	override method moverPara(direccion) {		
 		super(direccion)
 		direccion.cambiarAspecto(self)		//polimorfismo
@@ -20,7 +19,6 @@ object carpincho inherits EnteDentroDelMargen(posicion=game.center(),aspecto="ca
 	method cambiarAspecto(nuevoAspecto) {	aspecto = nuevoAspecto			}
 
 	//method hacerEfecto(capy)			{  									}
-	method sumarPuntaje() 				{   hud.aumentarPuntaje() 			}
 	method reiniciarValores()			{	self.vida(3) 					}
 	method perder(porCausa)				{	menuFinal.configurarFin(porCausa)}
 	
