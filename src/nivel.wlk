@@ -36,8 +36,8 @@ object nivel {
 		game.addVisual(tinchoMontania)
 		game.addVisual(tinchoCerca)
 		game.addVisual(hud)
-		game.boardGround("Background.png")
-		self.reiniciarValores()
+		game.boardGround("Background.png")		
+		self.reiniciarValores()				// reinicia el soundtrack
 		
 //		carpincho.hitboxes().forEach({ hitbox => game.onCollideDo(hitbox, {elemento => elemento.hacerEfecto(carpincho)
 //												self.configuracionParticula(particulaNegativa)}) })
@@ -55,8 +55,9 @@ object nivel {
 		
 		keyboard.up().onPressDo({ carpincho.moverPara(arriba) })
 		keyboard.down().onPressDo({ carpincho.moverPara(abajo) })
+		keyboard.m().onPressDo({nuestroReproductor.pausarSoundtrack()})	//soundtrack
+		
 		//keyboard.space().onPressDo({}) --> Presionar barra para empezar juego, un menu
-		keyboard.s().onPressDo({nuestroReproductor.iniciarSoundtrack()})
 	}
 
 
@@ -109,6 +110,7 @@ object nivel {
 	method reiniciarValores(){
 		hud.reiniciarValores()
 		carpincho.reiniciarValores()
+		nuestroReproductor.iniciarSoundtrack()// soundtrack
 	}
 }
 
@@ -116,6 +118,7 @@ object nivel {
 object menuFinal {
 	method configurarFin(porCausa){
 		game.clear() 
+		nuestroReproductor.pausarSoundtrack() // soundtrack
 		game.addVisual(porCausa)		// se puede cambiar agregando otro fondo con addVisual
 		game.addVisual(textoFin)
 		menu.configurarTeclas()
@@ -127,6 +130,7 @@ object menuFinal {
 }
 
 object nuestroReproductor {
+	const soundtrack = soundProducer.sound("Musicadelcarpincho.mp3")
 	
 	method reproducir(motivo){
 		const sonido = soundProducer.sound("ruido" + motivo + ".mp3")
@@ -137,10 +141,16 @@ object nuestroReproductor {
 		
 //SOUNDTRACK
 	method iniciarSoundtrack(){
-		const soundtrack = soundProducer.sound("Musicadelcarpincho.mp3")
-		soundtrack.initialize()
-		soundtrack.play()
-		soundtrack.shouldLoop(true)
+		if (soundtrack.played()){
+			soundtrack.resume()
+		}else{
+			soundtrack.initialize()
+			soundtrack.play()
+			soundtrack.shouldLoop(true)
+		}
+	}
+	method pausarSoundtrack(){
+		soundtrack.pause()
 	}
 }
 
