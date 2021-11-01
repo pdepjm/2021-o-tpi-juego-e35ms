@@ -20,11 +20,14 @@ object carpincho inherits EnteDentroDelMargen(posicion=game.center(),aspecto="ca
 
 	//method hacerEfecto(capy)			{  									}
 	method reiniciarValores()			{	self.vida(3) 					}
-	method perder(porCausa)				{	menuFinal.configurarFin(porCausa)}
+	method perder(porCausa)				{	nuestroReproductor.reproducir("muerte")
+											menuFinal.configurarFin(porCausa)
+										}
 	
-	method restarVida(cuanta) 			{	vida = (vida - cuanta).max(0)	
+	method restarVida(cuanta) 			{	nuestroReproductor.reproducir("danio")
+											vida = (vida - cuanta).max(0)	
 											if(self.estaMuerto()){ 
 												self.perder(porGolpe)
 											}
-	}
+										}
 }

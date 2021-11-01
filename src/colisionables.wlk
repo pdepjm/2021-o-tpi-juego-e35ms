@@ -61,6 +61,7 @@ class Alimento inherits EnteDentroDelMargen {
 	const aumentoDeVida = 0
 
 	method hacerEfecto(capybara){
+		nuestroReproductor.reproducir("comer")
 		capybara.aumentarVida(aumentoDeVida)
 		nivel.configuracionParticula(particulaPositiva)		// Cambiar a particula Positiva
 	}
@@ -69,6 +70,7 @@ class Alimento inherits EnteDentroDelMargen {
 object mate inherits EnteDentroDelMargen(aspecto="mate.png") {
 	
 	method hacerEfecto(capybara){		
+		nuestroReproductor.reproducir("mate")
 		hud.aumentarPuntaje()
 	}
 }
