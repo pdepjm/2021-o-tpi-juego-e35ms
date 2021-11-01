@@ -55,6 +55,15 @@ object nivel {
 		keyboard.up().onPressDo({ carpincho.moverPara(arriba) })
 		keyboard.down().onPressDo({ carpincho.moverPara(abajo) })
 		//keyboard.space().onPressDo({}) --> Presionar barra para empezar juego, un menu
+		keyboard.s().onPressDo({self.iniciarSoundtrack})
+	}
+	
+//SOUNDTRACK
+	method iniciarSoundtrack(){
+		const soundtrack = game.sound("Musicadelcarpincho.mp3")
+		soundtrack.initialize()
+		soundtrack.play()
+		soundtrack.shouldLoop(true)
 	}
 	
 // MARGENES DEL MAPA HABILITADOS PARA NUESTRO CARPINCHO/ELEMENTOS	
