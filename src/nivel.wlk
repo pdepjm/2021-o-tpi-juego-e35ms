@@ -19,11 +19,11 @@ object menu{
         keyboard.space().onPressDo({self.comenzarJuego()})
     }
     method comenzarJuego(){
-    	
 		game.removeVisual(menuImagen)
         nivel.configuracionInicial()
         nivel.configurarTeclas()
 		nivel.configurarTimers()
+		nuestroReproductor.iniciarSoundtrack()
     }
 }
 
@@ -55,7 +55,7 @@ object nivel {
 		
 		keyboard.up().onPressDo({ carpincho.moverPara(arriba) })
 		keyboard.down().onPressDo({ carpincho.moverPara(abajo) })
-		keyboard.m().onPressDo({nuestroReproductor.pausarSoundtrack()})	//soundtrack
+		keyboard.m().onPressDo({nuestroReproductor.cambiarEstadoSoundtrack()})	//soundtrack
 		
 		//keyboard.space().onPressDo({}) --> Presionar barra para empezar juego, un menu
 	}
@@ -107,10 +107,10 @@ object nivel {
 	}	
 
 // CONFIGURACION DE REINICIAR NIVEL 						
-	method reiniciarValores(){
+	method reiniciarValores() {
 		hud.reiniciarValores()
 		carpincho.reiniciarValores()
-		nuestroReproductor.iniciarSoundtrack()// soundtrack
+		//nuestroReproductor.resumirSoundtrack() // soundtrack
 	}
 }
 
@@ -118,7 +118,6 @@ object nivel {
 object menuFinal {
 	method configurarFin(porCausa){
 		game.clear() 
-		nuestroReproductor.pausarSoundtrack() // soundtrack
 		game.addVisual(porCausa)		// se puede cambiar agregando otro fondo con addVisual
 		game.addVisual(textoFin)
 		menu.configurarTeclas()
@@ -130,6 +129,7 @@ object menuFinal {
 }
 
 object nuestroReproductor {
+	var reproduciendo = true
 	const soundtrack = soundProducer.sound("Musicadelcarpincho.mp3")
 	
 	method reproducir(motivo){
@@ -140,19 +140,27 @@ object nuestroReproductor {
 	
 		
 //SOUNDTRACK
-	method iniciarSoundtrack(){
-		if (soundtrack.played()){
-			soundtrack.resume()
-		}else{
-			soundtrack.initialize()
-			soundtrack.play()
-			soundtrack.shouldLoop(true)
+	method iniciarSoundtrack() {
+		soundtrack.initialize()
+		soundtrack.play()
+		soundtrack.shouldLoop(true)
+	}
+	method pausarSoundtrack() {
+		soundtrack.pause()
+		reproduciendo = false
+	}
+	method resumirSoundtrack() {
+		soundtrack.resume()
+		reproduciendo = true
+	}
+	method cambiarEstadoSoundtrack() {
+		if(reproduciendo){
+			self.pausarSoundtrack()	
+		}
+		else
+			self.resumirSoundtrack()			
 		}
 	}
-	method pausarSoundtrack(){
-		soundtrack.pause()
-	}
-}
 
 
 
