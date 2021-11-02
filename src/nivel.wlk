@@ -144,6 +144,8 @@ object nuestroReproductor {
 		soundtrack.initialize()
 		soundtrack.play()
 		soundtrack.shouldLoop(true)
+		soundtrack.volume(0.1)			// detalle para que el soundtrack suene bajito
+		
 	}
 	method pausarSoundtrack() {
 		soundtrack.pause()
@@ -152,6 +154,7 @@ object nuestroReproductor {
 	method resumirSoundtrack() {
 		soundtrack.resume()
 		reproduciendo = true
+		soundtrack.volume(0.1)		// mismo detalle
 	}
 	method cambiarEstadoSoundtrack() {
 		if(reproduciendo){

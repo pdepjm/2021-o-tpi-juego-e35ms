@@ -16,17 +16,31 @@ class Ente {
 
 // MODELAMOS LA CLASE TINCHO
 class Tincho inherits Ente {
-	var mensajes =["ahi va la ovalada mann", "ojo con la pelota bro" , " cuidado NEVERPONY", "te gusta marama man?"]		// se pueden agregar mas mensajes
+	const tipoTincho = agresivo // agresivo o tranquilo
 	
 	method mandarMensaje(){
-		game.say(self, mensajes.anyOne() )
+		game.say(self, tipoTincho.mandarMensaje() )
 		
 	}
 }
-
+object agresivo{
+	const mensajes = ["ahi va la ovalada mann"," cuidado NEVERPONY", "NO te gusta marama man?", "el que le da al capy le compro unas frias!"]
+	
+	method mandarMensaje(){
+		return mensajes.anyOne() 
+	}
+}
+object tranquilo{
+	const mensajes = ["uy cuidado con el marsupial" , "Ups!" , "abajooo!" , "ojo con la pelota bro" ]
+		
+	method mandarMensaje(){
+		return mensajes.anyOne()
+		// agregar un detalle tincho asi no repetimos logica xd 
+	}
+}
 // CREAMOS LOS OBJETOS DE LA CLASE TINCHO
-const tinchoMontania = new Tincho(posicion = game.at(-1,16), aspecto = "tincho_0001.png")
-const tinchoCerca = new Tincho(posicion = game.at(0,4), aspecto = "tincho_0003.png")
+const tinchoMontania = new Tincho(tipoTincho= tranquilo, posicion = game.at(-1,16), aspecto = "tincho_0001.png")
+const tinchoCerca = new Tincho(tipoTincho= agresivo,  posicion = game.at(0,4), aspecto = "tincho_0003.png")
 
 // CREAMOS LA CLASE DE PARTICULAS
 class Particula {
