@@ -33,6 +33,7 @@ object porTiempo { // Causa 2
 object textoFin {
 	method position() = game.at(9,9)
 
+	method text() = " Su Puntaje fue " + hud.puntaje() + "!" 
 	
 	method textColor() = paleta.azul()
 

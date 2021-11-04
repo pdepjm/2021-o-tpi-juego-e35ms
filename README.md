@@ -2,7 +2,7 @@
 
 ## Equipo de desarrollo
 
-- Lecaldare Augusto
+- Augusto Lecaldare
 - Alexander Kalinin
 - Leandro Marcelo Lienard Guerrisi
 - Felipe Nani
@@ -11,9 +11,11 @@
 
 ## Capturas
 
-![mi foto](foto2.jpeg)
+![mi foto](foto1.png)
 
-![mi foto](foto1.jpeg)
+![mi foto](foto2.png)
+
+![mi foto](foto3.png)
 
 ## Reglas de Juego / Instrucciones
 

@@ -17,13 +17,13 @@ object menu{
     }
     method configurarTeclas(){
         keyboard.space().onPressDo({self.comenzarJuego()})
+        keyboard.p().onPressDo({nuestroReproductor.iniciarSoundtrack()})
     }
     method comenzarJuego(){
 		game.removeVisual(menuImagen)
         nivel.configuracionInicial()
         nivel.configurarTeclas()
 		nivel.configurarTimers()
-		nuestroReproductor.iniciarSoundtrack()
     }
 }
 
@@ -115,13 +115,14 @@ object menuFinal {
 }
 
 object nuestroReproductor {
-	var reproduciendo = true
+	var reproduciendo = false
 	const soundtrack = soundProducer.sound("tetrismusica.mp3")
 	
 	method reproducir(motivo){
 		const sonido = soundProducer.sound("ruido" + motivo + ".mp3")
 		sonido.initialize()
 		sonido.play()
+		reproduciendo = true
 	}
 	
 		
@@ -147,9 +148,5 @@ object nuestroReproductor {
 		soundtrack.resume()
 		reproduciendo = true
 	}
-
-
-
-
-
-
+	
+}

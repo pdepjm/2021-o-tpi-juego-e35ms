@@ -4,6 +4,7 @@ import carpincho.*
 import texto.*
 import nivel.*
 import colisionables.*
+import miscelanea.*
 
 
 describe "Test efectos" {
@@ -32,7 +33,13 @@ describe "Test efectos" {
 		carpincho.restarVida(2)
 		sandia.hacerEfecto(carpincho)
 		assert.that(carpincho.vida() == 2 )
-	}	
+	}
+	
+	test "agarrar un mate suma Puntaje"{
+        mate.hacerEfecto(carpincho)
+        assert.that(hud.puntaje() == 1)
+    }
+	
 	test "carpincho muerto :("{
 		carpincho.restarVida(3)
 		
