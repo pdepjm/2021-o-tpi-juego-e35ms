@@ -17,13 +17,13 @@ object menu{
     }
     method configurarTeclas(){
         keyboard.space().onPressDo({self.comenzarJuego()})
+        keyboard.p().onPressDo({nuestroReproductor.iniciarSoundtrack()})
     }
     method comenzarJuego(){
 		game.removeVisual(menuImagen)
         nivel.configuracionInicial()
         nivel.configurarTeclas()
 		nivel.configurarTimers()
-		nuestroReproductor.iniciarSoundtrack()
     }
 }
 
@@ -147,9 +147,5 @@ object nuestroReproductor {
 		soundtrack.resume()
 		reproduciendo = true
 	}
-
-
-
-
-
-
+	
+}

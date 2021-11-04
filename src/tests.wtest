@@ -4,12 +4,11 @@ import carpincho.*
 import texto.*
 import nivel.*
 import colisionables.*
+import miscelanea.*
 
 
 describe "Test efectos" {
-	//method initialize() {
-	//	soundProducer.provider(soundProviderMock)		
-	//}
+
 	
 	method initialize() {
 		game.cellSize(40)
@@ -17,8 +16,10 @@ describe "Test efectos" {
 		game.width(20)
 	
 		game.title("Carpinchos Invasores")
-	
+			
 		nivel.configuracionInicial()
+		
+		soundProducer.provider(soundProviderMock)
 	}
 	test "carpincho choca con pelota de rugby " {
 		pelotaCerca.hacerEfecto(carpincho)
@@ -32,7 +33,13 @@ describe "Test efectos" {
 		carpincho.restarVida(2)
 		sandia.hacerEfecto(carpincho)
 		assert.that(carpincho.vida() == 2 )
-	}	
+	}
+	
+	test "agarrar un mate suma Puntaje"{
+        mate.hacerEfecto(carpincho)
+        assert.that(hud.puntaje() == 1)
+    }
+	
 	test "carpincho muerto :("{
 		carpincho.restarVida(3)
 		
