@@ -26,14 +26,14 @@ El juego tiene como protagonista un Carpincho, el cual se encuentra por circunst
   - En el caso de comer frutas que se encuentren en el escenario nuestra vida aumentará (1 corazon por fruta)
 
 Teclas del juego:
-	- Espacio (cuando se indique): Iniciar juego.
-	- Arriba: mover carpincho hacia arriba.
-	- Abajo: mover carpincho hacia abajo.
-	- Derecha: mover carpincho hacia derecha.
-	- Izquierda: mover carpincho hacia izquierda.
-	- P: iniciar soundtrack por primera vez.
-	- M: Activar y desactivar musica de fondo.
-	- Enter (cuando se indique): Volver a pantalla inicial.
+  - Espacio (cuando se indique): Iniciar juego.
+  - Arriba: mover carpincho hacia arriba.
+  - Abajo: mover carpincho hacia abajo.
+  - Derecha: mover carpincho hacia derecha.
+  - Izquierda: mover carpincho hacia izquierda.
+  - P: iniciar soundtrack por primera vez.
+  - M: Activar y desactivar musica de fondo.
+  - Enter (cuando se indique): Volver a pantalla inicial.
 	
 ## Respuestas teóricas
 
