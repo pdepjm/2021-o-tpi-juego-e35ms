@@ -115,14 +115,13 @@ object menuFinal {
 }
 
 object nuestroReproductor {
-	var reproduciendo = false
+	var reproduciendo = true
 	const soundtrack = soundProducer.sound("tetrismusica.mp3")
 	
 	method reproducir(motivo){
 		const sonido = soundProducer.sound("ruido" + motivo + ".mp3")
 		sonido.initialize()
 		sonido.play()
-		reproduciendo = true
 	}
 	
 		

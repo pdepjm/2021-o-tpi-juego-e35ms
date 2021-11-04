@@ -12,6 +12,5 @@ program juego {
 	
 	menu.configuracionInicial()
 
-	
 	game.start()
 }
