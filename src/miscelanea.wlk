@@ -5,7 +5,7 @@ import nivel.*
 import texto.*
 
 class Ente {
-	var posicion = game.center()		// esto se puede cambiar por property ?? 
+	var posicion = game.center()
 	var aspecto = "questionMarkNull.png"
 
 	method position() = posicion
@@ -15,14 +15,15 @@ class Ente {
 }
 
 // MODELAMOS LA CLASE TINCHO
-class Tincho inherits Ente {
-	const tipoTincho = agresivo // agresivo o tranquilo
+class Tincho inherits Ente { 
+	const tipoTincho = agresivo // Agresivo o Tranquilo, el cual puede estar en el "Tipo" de cualquier ente que ataque, como por ejemplo en un futuro, un golfista.
 	
 	method mandarMensaje(){
 		game.say(self, tipoTincho.mandarMensaje() )
 		
 	}
 }
+
 object agresivo{
 	const mensajes = ["ahi va la ovalada mann"," cuidado NEVERPONY", "NO te gusta marama man?", "el que le da al capy le compro unas frias!"]
 	
@@ -63,7 +64,6 @@ object hud {
 	method pasarUnSegundo() {
 		tiempoReloj -= 1
 		if(tiempoReloj == 0){carpincho.perder(porTiempo)}
-		//game.say(self,tiempo.toString())
 	}
 	method aumentarPuntaje() {
 		puntaje += 1
@@ -77,8 +77,3 @@ object menuImagen {
 	method image() = "Menu.png"
 	method position() = game.at(0,0)
 }
-
-//const hitbox1 = new Hitbox(posicion = game.at(carpincho.position().x() , carpincho.position().y()+1))
-//const hitbox2 = new Hitbox(posicion = game.at(carpincho.position().x()+1 , carpincho.position().y()))
-//const hitbox3 = new Hitbox(posicion = game.at(carpincho.position().x()+1 , carpincho.position().y()+1))
-//const hitbox4 = new Hitbox(posicion = carpincho.position())

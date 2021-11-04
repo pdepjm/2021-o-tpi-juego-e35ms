@@ -5,7 +5,6 @@ import nivel.*
 import miscelanea.*
 
 // MODELAMOS LA CLASE PELOTA
-
 class Pelota inherits Ente{
     var property danioProyectil = 1    
         
@@ -29,8 +28,8 @@ class PelotaRugby inherits Pelota(danioProyectil = 2){
     
     method ubicarPosicion(_){    posicion = posicionInicial     } 
     
-    override method mostrar(){                    //usa polimorfismo Lindo para hacer interfaz porq usa al tincho acargo
-        super()                  // no uso super porq se acopla con la imagen de clase superior     
+    override method mostrar(){
+        super()   
         tinchoACargo.mandarMensaje()
     }
     
@@ -46,8 +45,8 @@ const pelotaGolfAbajo = new PelotaGolf(posicion = game.at(13,0),  aspecto = "pel
 const pelotaGolfDerecha = new PelotaGolf(posicion = game.at(18,9), aspecto = "pelotaGolf.png",danioProyectil = 1 )
 const pelotaGolfDerecha2 = new PelotaGolf(posicion = game.at(18,9), aspecto = "pelotaGolf.png",danioProyectil = 1 )
 
-
-class EnteDentroDelMargen inherits Ente{	// clase que sirve para elementos dentro del margen por el cual se puede mover
+// MODELAMOS ENTE DENTRO DEL MARGEN
+class EnteDentroDelMargen inherits Ente{	
 	
 	override method moverPara(direccion) {    
 		 if (nivel.estaHabilitada(direccion.proximaPosicion(posicion)) )
@@ -63,7 +62,7 @@ class Alimento inherits EnteDentroDelMargen {
 	method hacerEfecto(capybara){
 		nuestroReproductor.reproducir("comer")
 		capybara.aumentarVida(aumentoDeVida)
-		nivel.configuracionParticula(particulaPositiva)		// Cambiar a particula Positiva
+		nivel.configuracionParticula(particulaPositiva)
 	}
 }
 
@@ -77,4 +76,4 @@ object mate inherits EnteDentroDelMargen(aspecto="mate.png") {
 
 // CREAMOS LOS OBJETOS DE LA CLASE ALIMENTO
 const sandia = new Alimento(aspecto = "sandiaLoca.png",aumentoDeVida = 1)
-//const mate = new Alimento(aspecto = "mate.png",aumentoDeVida = 0) // El mate será un Alimento que use herencia ya que será igual que la sandia pero se agregaria un metodo "contador" que sume los mates 
+
