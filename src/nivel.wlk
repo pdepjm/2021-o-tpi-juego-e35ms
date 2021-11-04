@@ -52,7 +52,6 @@ object nivel {
 	method configurarTeclas(){
 		keyboard.left().onPressDo({ carpincho.moverPara(izquierda)}) // la responsabilidad de cambiar el aspecto es del carpincho.-->Corregido por lean
 		keyboard.right().onPressDo({ carpincho.moverPara(derecha) })	// No vale usar if para resolver esto, resuelvan polimórficamente.--> same blda
-		
 		keyboard.up().onPressDo({ carpincho.moverPara(arriba) })
 		keyboard.down().onPressDo({ carpincho.moverPara(abajo) })
 		keyboard.m().onPressDo({nuestroReproductor.cambiarEstadoSoundtrack()})	//soundtrack
@@ -144,7 +143,7 @@ object nuestroReproductor {
 		soundtrack.initialize()
 		soundtrack.play()
 		soundtrack.shouldLoop(true)
-		soundtrack.volume(0.1)			// detalle para que el soundtrack suene bajito
+		//soundtrack.volume(0.1)			// detalle para que el soundtrack suene bajito
 		
 	}
 	method pausarSoundtrack() {
@@ -154,7 +153,7 @@ object nuestroReproductor {
 	method resumirSoundtrack() {
 		soundtrack.resume()
 		reproduciendo = true
-		soundtrack.volume(0.1)		// mismo detalle
+		//soundtrack.volume(0.1)		// mismo detalle
 	}
 	method cambiarEstadoSoundtrack() {
 		if(reproduciendo){
