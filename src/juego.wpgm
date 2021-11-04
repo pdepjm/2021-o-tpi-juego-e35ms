@@ -3,6 +3,8 @@ import carpincho.*
 import texto.*
 import nivel.*
 
+// Disfruten!
+
 program juego {
     game.cellSize(40)
 	game.height(20)
