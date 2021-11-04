@@ -3,14 +3,14 @@ import carpincho.*
 import texto.*
 import nivel.*
 
-// Disfruten!
+// Disfruten! hola
 
 program juego {
     game.cellSize(40)
 	game.height(20)
 	game.width(20)
 	
-	game.title("Carpinchos Invasores")
+	game.title("Carpinchos Invasores 1")
 	
 	menu.configuracionInicial()
 
