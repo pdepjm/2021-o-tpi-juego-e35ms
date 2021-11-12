@@ -1,18 +1,10 @@
 import wollok.game.*
-import carpincho.*
+import pepita.*
 import texto.*
-import nivel.*
-
-// Disfruten! hola
 
 program juego {
-    game.cellSize(40)
-	game.height(20)
-	game.width(20)
-	
-	game.title("Carpinchos Invasores")
-	
-	menu.configuracionInicial()
-
+	game.title("Juego Base")
+	game.addVisual(pepita)
+	game.addVisual(texto)
 	game.start()
 }
