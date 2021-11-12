@@ -48,6 +48,10 @@ class Particula {
 	const aspecto = null
 	method image() = aspecto
 	method position() = carpincho.position()
+	method aparecer(){
+		game.addVisual(self)
+		game.schedule(500,{=> game.removeVisual(self)} )
+	}
 }
 
 // CREAMOS LOS OBJETOS DE LA CLASE PARTICULA

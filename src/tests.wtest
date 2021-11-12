@@ -22,21 +22,21 @@ describe "Test efectos" {
 		soundProducer.provider(soundProviderMock)
 	}
 	test "carpincho choca con pelota de rugby " {
-		pelotaCerca.hacerEfecto(carpincho)
+		pelotaCerca.colisionarCon(carpincho)
 		assert.equals(1,carpincho.vida())
 	}	
 	test "carpincho choca con pelota de golf " {
-		pelotaGolfArriba.hacerEfecto(carpincho)
+		pelotaGolfArriba.colisionarCon(carpincho)
 		assert.that(carpincho.vida() == 2)
 	}	
 	test "carpincho come una sandia " {
 		carpincho.restarVida(2)
-		sandia.hacerEfecto(carpincho)
+		sandia.colisionarCon(carpincho)
 		assert.that(carpincho.vida() == 2 )
 	}
 	
 	test "agarrar un mate suma Puntaje"{
-        mate.hacerEfecto(carpincho)
+        mate.colisionarCon(carpincho)
         assert.that(hud.puntaje() == 1)
     }
 	

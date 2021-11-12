@@ -8,16 +8,28 @@ import miscelanea.*
 class Pelota inherits Ente{
     var property danioProyectil = 1    
         
-    method hacerEfecto(capybara){
+    method colisionarCon(capybara){
         capybara.restarVida(danioProyectil)
-        nivel.configuracionParticula(particulaNegativa)    
+        particulaNegativa.aparecer()						//lean:   lo q dice abajo
     }
-    method mostrar()                {    game.addVisual(self)            }        
+   
+    method configurarPelota(tiempo, direccion, velocidad){	// pensar mejor nombre , quizas configurarMovimiento (lo mismo para la pelota)
+ 		self.ubicarPosicion(direccion)
+ 		self.mostrar()
+ 		
+		game.onTick(velocidad,"pelotaMoving",{=> self.moverPara(direccion)})
+		game.schedule(tiempo-100,{=> game.removeVisual(self)} )
+		game.schedule(tiempo-100,{=> game.removeTickEvent("pelotaMoving")} )
+
+	}
+	method mostrar()                {    game.addVisual(self)            }
+	method ubicarPosicion(direccion){}		// se overridea en las clases
 }
 
 class PelotaGolf inherits Pelota{
-    method ubicarPosicion(direccion){    posicion = direccion.spawnAlAzar()    }
+	override  method ubicarPosicion(direccion){    posicion = direccion.spawnAlAzar()    }
     
+
 }
 
 class PelotaRugby inherits Pelota(danioProyectil = 2){
@@ -26,7 +38,7 @@ class PelotaRugby inherits Pelota(danioProyectil = 2){
     
     method posicionInicial() = posicionInicial 
     
-    method ubicarPosicion(_){    posicion = posicionInicial     } 
+    override method ubicarPosicion(_){    posicion = posicionInicial     } 
     
     override method mostrar(){
         super()   
@@ -59,16 +71,24 @@ class EnteDentroDelMargen inherits Ente{
 class Alimento inherits EnteDentroDelMargen {
 	const aumentoDeVida = 0
 
-	method hacerEfecto(capybara){
+	method colisionarCon(capybara){
 		nuestroReproductor.reproducir("comer")
 		capybara.aumentarVida(aumentoDeVida)
-		nivel.configuracionParticula(particulaPositiva)
+		particulaPositiva.aparecer()		// lean: en realidad aparece y desaparece, debe haber una palabra q le caiga mejor
+	}
+	
+	method configurarAlimento(){
+		self.posicion(game.at(coordenadaPosible.alAzar(2,16), coordenadaPosible.alAzar(2,16)))
+		game.addVisual(self) 
+		game.onTick(100,"alimentoMoving", {self.moverPara(direccionesPosibles.direccionAlAzar())}) 
+		game.schedule(3000,{=> game.removeVisual(self)} )
+		game.schedule(3000,{=> game.removeTickEvent("alimentoMoving")} )
 	}
 }
 
-object mate inherits EnteDentroDelMargen(aspecto="mate.png") {
+object mate inherits Alimento(aspecto="mate.png") {		// ahora el mate hereda de Alimento
 	
-	method hacerEfecto(capybara){		
+	override method colisionarCon(capybara){		
 		nuestroReproductor.reproducir("mate")
 		hud.aumentarPuntaje()
 	}
