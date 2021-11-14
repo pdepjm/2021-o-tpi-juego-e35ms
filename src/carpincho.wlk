@@ -6,7 +6,7 @@ import texto.*
 
 // MODELAMOS NUESTRO PROTAGONISTA (ES UNICO)!!!
 
-object carpincho inherits EnteDentroDelMargen(posicion=game.center(),aspecto="carpincho2.png") {
+object carpincho inherits MovibleDentroDelMargen (posicion=game.center(),aspecto="carpincho2.png") {
 	var property vida = 3
 	override method moverPara(direccion) {		
 		super(direccion)

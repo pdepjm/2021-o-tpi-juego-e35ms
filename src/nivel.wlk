@@ -53,35 +53,19 @@ object nivel {
  	method estaHabilitada( posicion ){ // --> Sirve para restringir bordes del mapa para algunos entes!
  		return  posicion.x() != 1 && posicion.y() != 0 && posicion.y() != 18 && posicion.x() != 18
  	}
-
-/* aca estaba la conf pelotas
- 
- 
-*/
-
-/* aca estaba configurar alimento 
-
-*/
-
-// CONFIGURACION DE PARTICULAS
-
-/*
-
-
-*/
 	
 // CONFIGURACION DE LOS onTick
 	method configurarTimers(){					// lean: revisar si se pueden delegar a la calse pelota/alimento
 		game.onTick(6000,"sandiaAppearing",				{=> sandia.configurarAlimento()})
 		game.onTick(6000,"mateAppearing"  ,				{=> mate.configurarAlimento()})
-		game.onTick(3000,"ConfiguraPelotaMontania",		{=> pelotaMontania.configurarPelota(3000,derecha,100)})	
-		game.onTick(4000,"ConfiguraPelotaCerca",		{=> pelotaCerca.configurarPelota(4000,derecha,100)})
-		game.onTick(4000,"ConfigurapelotaGolfArriba",	{=> pelotaGolfArriba.configurarPelota(4000,abajo,100)})
-		game.onTick(4000,"ConfigurapelotaGolfAbajo",	{=> pelotaGolfAbajo.configurarPelota(4000,arriba,100)})
-		game.onTick(4000,"ConfigurapelotaGolfDerecha",	{=> pelotaGolfDerecha.configurarPelota(4000,izquierda,100)})
+		game.onTick(3000,"ConfiguraPelotaMontania",		{=> pelotaMontania.asignarMovimiento(3000,derecha,100)})	
+		game.onTick(4000,"ConfiguraPelotaCerca",		{=> pelotaCerca.asignarMovimiento(4000,derecha,100)})
+		game.onTick(4000,"ConfigurapelotaGolfArriba",	{=> pelotaGolfArriba.asignarMovimiento(4000,abajo,100)})
+		game.onTick(4000,"ConfigurapelotaGolfAbajo",	{=> pelotaGolfAbajo.asignarMovimiento(4000,arriba,100)})
+		game.onTick(4000,"ConfigurapelotaGolfDerecha",	{=> pelotaGolfDerecha.asignarMovimiento(4000,izquierda,100)})
 		game.onTick(1000,"CountSegundos",  				{=> hud.pasarUnSegundo()})
-		game.schedule(12000,{=> game.onTick(4000,"ConfigurapelotaGolfDerecha2", {=> pelotaGolfDerecha2.configurarPelota(4000,izquierda,75)})} ) 
-		game.schedule(16000,{=> game.onTick(4000,"ConfigurapelotaGolfArriba2",	{=> pelotaGolfArriba2.configurarPelota(4000,abajo,50)})} ) 
+		game.schedule(12000,{=> game.onTick(4000,"ConfigurapelotaGolfDerecha2", {=> pelotaGolfDerecha2.asignarMovimiento(4000,izquierda,75)})} ) 
+		game.schedule(16000,{=> game.onTick(4000,"ConfigurapelotaGolfArriba2",	{=> pelotaGolfArriba2.asignarMovimiento(4000,abajo,50)})} ) 
 	}	
 
 // CONFIGURACION DE REINICIAR NIVEL 						
@@ -100,8 +84,7 @@ object menuFinal {
 		menu.configurarTeclas()
 		keyboard.enter().onPressDo({ game.removeVisual(textoFin)
 									game.removeVisual(porCausa) 
-		  							menu.configuracionInicial()})
-							  
+		  							menu.configuracionInicial()})						  
 	}
 }
 

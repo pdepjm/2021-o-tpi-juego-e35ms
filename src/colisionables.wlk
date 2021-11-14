@@ -4,16 +4,38 @@ import carpincho.*
 import nivel.*
 import miscelanea.*
 
+// MODELAMOS VISIBLE
+class Visible {
+	var posicion = game.center()
+	var aspecto = "questionMarkNull.png"
+
+	method position() = posicion
+	method image() = aspecto
+	method posicion(unaPosicion) {posicion = unaPosicion}
+}
+// MODELAMOS MOVIBLE 
+class Movible inherits Visible {
+	method moverPara(direccion) {posicion = direccion.proximaPosicion(posicion)}
+}
+
+// MODELAMOS MOVIBLE DENTRO DEL MARGEN
+class MovibleDentroDelMargen inherits Movible{	
+	
+	override method moverPara(direccion) {    
+		 if (nivel.estaHabilitada(direccion.proximaPosicion(posicion)) )
+			posicion = direccion.proximaPosicion(posicion)
+	}
+}
 // MODELAMOS LA CLASE PELOTA
-class Pelota inherits Ente{
+class Pelota inherits Movible{
     var property danioProyectil = 1    
         
     method colisionarCon(capybara){
         capybara.restarVida(danioProyectil)
-        particulaNegativa.aparecer()						//lean:   lo q dice abajo
+        particulaNegativa.manifestarse()						//lean:   lo q dice abajo
     }
    
-    method configurarPelota(tiempo, direccion, velocidad){	// pensar mejor nombre , quizas configurarMovimiento (lo mismo para la pelota)
+    method asignarMovimiento(tiempo, direccion, velocidad){	// pensar mejor nombre , quizas configurarMovimiento (lo mismo para la pelota)
  		self.ubicarPosicion(direccion)
  		self.mostrar()
  		
@@ -28,8 +50,6 @@ class Pelota inherits Ente{
 
 class PelotaGolf inherits Pelota{
 	override  method ubicarPosicion(direccion){    posicion = direccion.spawnAlAzar()    }
-    
-
 }
 
 class PelotaRugby inherits Pelota(danioProyectil = 2){
@@ -43,8 +63,7 @@ class PelotaRugby inherits Pelota(danioProyectil = 2){
     override method mostrar(){
         super()   
         tinchoACargo.mandarMensaje()
-    }
-    
+    }   
 }
 
 
@@ -57,24 +76,14 @@ const pelotaGolfAbajo = new PelotaGolf(posicion = game.at(13,0),  aspecto = "pel
 const pelotaGolfDerecha = new PelotaGolf(posicion = game.at(18,9), aspecto = "pelotaGolf.png",danioProyectil = 1 )
 const pelotaGolfDerecha2 = new PelotaGolf(posicion = game.at(18,9), aspecto = "pelotaGolf.png",danioProyectil = 1 )
 
-// MODELAMOS ENTE DENTRO DEL MARGEN
-class EnteDentroDelMargen inherits Ente{	
-	
-	override method moverPara(direccion) {    
-		 if (nivel.estaHabilitada(direccion.proximaPosicion(posicion)) )
-			posicion = direccion.proximaPosicion(posicion)
-	}
-}
-
-
 // MODELAMOS LA CLASE ALIMENTO
-class Alimento inherits EnteDentroDelMargen {
+class Alimento inherits MovibleDentroDelMargen {
 	const aumentoDeVida = 0
 
 	method colisionarCon(capybara){
 		nuestroReproductor.reproducir("comer")
 		capybara.aumentarVida(aumentoDeVida)
-		particulaPositiva.aparecer()		// lean: en realidad aparece y desaparece, debe haber una palabra q le caiga mejor
+		particulaPositiva.manifestarse()
 	}
 	
 	method configurarAlimento(){
@@ -86,7 +95,7 @@ class Alimento inherits EnteDentroDelMargen {
 	}
 }
 
-object mate inherits Alimento(aspecto="mate.png") {		// ahora el mate hereda de Alimento
+object mate inherits Alimento(aspecto="mate.png") {
 	
 	override method colisionarCon(capybara){		
 		nuestroReproductor.reproducir("mate")
