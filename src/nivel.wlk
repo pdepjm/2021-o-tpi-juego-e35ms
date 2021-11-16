@@ -56,8 +56,13 @@ object nivel {
 	
 // CONFIGURACION DE LOS onTick
 	method configurarTimers(){					// lean: revisar si se pueden delegar a la calse pelota/alimento
-		game.onTick(6000,"sandiaAppearing",				{=> sandia.configurarAlimento()})
+		sandia.inciarMovimientoCada(6000)
 		game.onTick(6000,"mateAppearing"  ,				{=> mate.configurarAlimento()})
+		
+		pelotaMontania.inciarMovimientoCada(3000,derecha,100)
+		pelotaCerca.inciarMovimientoCada(4000,derecha,100)
+		//PRUEBA
+		
 		game.onTick(3000,"ConfiguraPelotaMontania",		{=> pelotaMontania.asignarMovimiento(3000,derecha,100)})	
 		game.onTick(4000,"ConfiguraPelotaCerca",		{=> pelotaCerca.asignarMovimiento(4000,derecha,100)})
 		game.onTick(4000,"ConfigurapelotaGolfArriba",	{=> pelotaGolfArriba.asignarMovimiento(4000,abajo,100)})

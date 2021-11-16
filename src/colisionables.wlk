@@ -33,7 +33,12 @@ class Pelota inherits Movible{
     method colisionarCon(capybara){
         capybara.restarVida(danioProyectil)
         particulaNegativa.manifestarse()						//lean:   lo q dice abajo
+        }
+        
+    method inciarMovimientoCada(tiempo,lado,velocidad){
+    	game.onTick(3000,"ConfiguraPelotaMontania",	{=> self.asignarMovimiento(tiempo,lado,velocidad)})
     }
+    
    
     method asignarMovimiento(tiempo, direccion, velocidad){	// pensar mejor nombre , quizas configurarMovimiento (lo mismo para la pelota)
  		self.ubicarPosicion(direccion)
@@ -93,6 +98,11 @@ class Alimento inherits MovibleDentroDelMargen {
 		game.schedule(3000,{=> game.removeVisual(self)} )
 		game.schedule(3000,{=> game.removeTickEvent("alimentoMoving")} )
 	}
+	
+	method iniciarMovimientoCada(tiempo){
+		game.onTick(tiempo,"sandiaAppearing",	{=> self.configurarAlimento()})
+}
+
 }
 
 object mate inherits Alimento(aspecto="mate.png") {
