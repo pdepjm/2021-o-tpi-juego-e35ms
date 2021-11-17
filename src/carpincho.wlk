@@ -10,7 +10,7 @@ object carpincho inherits MovibleDentroDelMargen (posicion=game.center(),aspecto
 	var property vida = 3
 	override method moverPara(direccion) {		
 		super(direccion)
-		direccion.cambiarAspecto(self)		//polimorfismo
+		direccion.cambiarAspecto(self)		
                                         
     }
     
@@ -26,7 +26,7 @@ object carpincho inherits MovibleDentroDelMargen (posicion=game.center(),aspecto
 	}
 	
 	method restarVida(cuanta){
-			nuestroReproductor.reproducir("danio")	// esto capaz deberia ir en hacerEfecto de clase pelota, o tal vez no
+			nuestroReproductor.reproducir("danio")	
 			vida = (vida - cuanta).max(0)	
 			if(self.estaMuerto()){ 
 				self.perder(porGolpe)

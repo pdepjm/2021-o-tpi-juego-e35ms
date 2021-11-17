@@ -35,7 +35,7 @@ object nivel {
 		game.addVisual(tinchoCerca)
 		game.addVisual(hud)
 		game.boardGround("Background.png")					
-		game.onCollideDo(carpincho, {colisionable => colisionable.colisionarCon(carpincho)	})		//ex hacerEfecto
+		game.onCollideDo(carpincho, {colisionable => colisionable.colisionarCon(carpincho)	})		
 		self.reiniciarValores()
 	}
 
@@ -50,28 +50,26 @@ object nivel {
 
 
 // MARGENES DEL MAPA HABILITADOS PARA NUESTRO CARPINCHO/ELEMENTOS	
- 	method estaHabilitada( posicion ){ // --> Sirve para restringir bordes del mapa para algunos entes!
+ 	method estaHabilitada( posicion ){ 
  		return  posicion.x() != 1 && posicion.y() != 0 && posicion.y() != 18 && posicion.x() != 18
  	}
 	
 // CONFIGURACION DE LOS onTick
-	method configurarTimers(){					// lean: revisar si se pueden delegar a la calse pelota/alimento
-		sandia.inciarMovimientoCada(6000)
+	method configurarTimers(){	// lean: revisar si se pueden delegar a la calse pelota/alimento
+	
+		game.onTick(6000,"sandiaAppearing",				{=> sandia.configurarAlimento()})
 		game.onTick(6000,"mateAppearing"  ,				{=> mate.configurarAlimento()})
-		
-		pelotaMontania.inciarMovimientoCada(3000,derecha,100)
-		pelotaCerca.inciarMovimientoCada(4000,derecha,100)
-		//PRUEBA
-		
-		game.onTick(3000,"ConfiguraPelotaMontania",		{=> pelotaMontania.asignarMovimiento(3000,derecha,100)})	
-		game.onTick(4000,"ConfiguraPelotaCerca",		{=> pelotaCerca.asignarMovimiento(4000,derecha,100)})
-		game.onTick(4000,"ConfigurapelotaGolfArriba",	{=> pelotaGolfArriba.asignarMovimiento(4000,abajo,100)})
-		game.onTick(4000,"ConfigurapelotaGolfAbajo",	{=> pelotaGolfAbajo.asignarMovimiento(4000,arriba,100)})
-		game.onTick(4000,"ConfigurapelotaGolfDerecha",	{=> pelotaGolfDerecha.asignarMovimiento(4000,izquierda,100)})
+		game.onTick(3000,"ConfiguraPelotaMontania",		{=> pelotaMontania.asignarMovimiento(3000)})	
+		game.onTick(4000,"ConfiguraPelotaCerca",		{=> pelotaCerca.asignarMovimiento(4000)})
+		game.onTick(4000,"ConfigurapelotaGolfArriba",	{=> pelotaGolfArriba.asignarMovimiento(4000)})
+		game.onTick(4000,"ConfigurapelotaGolfAbajo",	{=> pelotaGolfAbajo.asignarMovimiento(4000)})
+		game.onTick(4000,"ConfigurapelotaGolfDerecha",	{=> pelotaGolfDerecha.asignarMovimiento(4000)})
 		game.onTick(1000,"CountSegundos",  				{=> hud.pasarUnSegundo()})
-		game.schedule(12000,{=> game.onTick(4000,"ConfigurapelotaGolfDerecha2", {=> pelotaGolfDerecha2.asignarMovimiento(4000,izquierda,75)})} ) 
-		game.schedule(16000,{=> game.onTick(4000,"ConfigurapelotaGolfArriba2",	{=> pelotaGolfArriba2.asignarMovimiento(4000,abajo,50)})} ) 
-	}	
+		game.schedule(12000,{=> game.onTick(4000,"ConfigurapelotaGolfDerecha2", {=> pelotaGolfDerecha2.asignarMovimiento(4000)})} ) 
+		game.schedule(16000,{=> game.onTick(4000,"ConfigurapelotaGolfArriba2",	{=> pelotaGolfArriba2.asignarMovimiento(4000)})} )
+		
+ 
+ 	}	
 
 // CONFIGURACION DE REINICIAR NIVEL 						
 	method reiniciarValores() {

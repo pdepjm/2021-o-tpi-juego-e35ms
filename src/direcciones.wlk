@@ -3,11 +3,7 @@ import carpincho.*
 import nivel.*
 
 object coordenadaPosible{
-	method alAzar(inicio,fin) = (new Range (start = inicio, end = fin)).anyOne() // 2 a 16 mapa, 4 a 14 golf
-	//method coordAlAzar(direccion){
-	//	return direccion.AlAzar()
-	//}
-
+	method alAzar(inicio,fin) = (new Range (start = inicio, end = fin)).anyOne() 
 }
 
 object direccionesPosibles{
@@ -16,8 +12,6 @@ object direccionesPosibles{
 	method direccionAlAzar() = direcciones.anyOne()
 }
 
-
-// capaz se podria usar clases en esto ya que aspecto arriba y abajo no hace nada ;(
 
 object izquierda {
 	method proximaPosicion(posicionActual) = posicionActual.left(1) 

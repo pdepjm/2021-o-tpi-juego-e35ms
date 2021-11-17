@@ -29,18 +29,15 @@ class MovibleDentroDelMargen inherits Movible{
 // MODELAMOS LA CLASE PELOTA
 class Pelota inherits Movible{
     var property danioProyectil = 1    
-        
+    var property direccion
+    var property velocidad   
+    
     method colisionarCon(capybara){
         capybara.restarVida(danioProyectil)
-        particulaNegativa.manifestarse()						//lean:   lo q dice abajo
+        particulaNegativa.manifestarse()						
         }
-        
-    method inciarMovimientoCada(tiempo,lado,velocidad){
-    	game.onTick(3000,"ConfiguraPelotaMontania",	{=> self.asignarMovimiento(tiempo,lado,velocidad)})
-    }
-    
-   
-    method asignarMovimiento(tiempo, direccion, velocidad){	// pensar mejor nombre , quizas configurarMovimiento (lo mismo para la pelota)
+
+    method asignarMovimiento(tiempo){	
  		self.ubicarPosicion(direccion)
  		self.mostrar()
  		
@@ -50,7 +47,7 @@ class Pelota inherits Movible{
 
 	}
 	method mostrar()                {    game.addVisual(self)            }
-	method ubicarPosicion(direccion){}		// se overridea en las clases
+	method ubicarPosicion(direccion2){}		
 }
 
 class PelotaGolf inherits Pelota{
@@ -73,13 +70,13 @@ class PelotaRugby inherits Pelota(danioProyectil = 2){
 
 
 // CREAMOS OBJETOS DE LA CLASE PELOTA
-const pelotaMontania = new PelotaRugby(posicion = tinchoMontania.position(),aspecto = "pelotaRugby.png", tinchoACargo = tinchoMontania,danioProyectil = 2)
-const pelotaCerca = new PelotaRugby(posicion = tinchoCerca.position(), tinchoACargo = tinchoCerca, aspecto = "pelotaRugby.png",danioProyectil = 2 )
-const pelotaGolfArriba = new PelotaGolf(posicion = game.at(4,18), aspecto = "pelotaGolf.png",danioProyectil = 1 )
-const pelotaGolfArriba2 = new PelotaGolf(posicion = game.at(4,18), aspecto = "pelotaGolf.png",danioProyectil = 1 )
-const pelotaGolfAbajo = new PelotaGolf(posicion = game.at(13,0),  aspecto = "pelotaGolf.png",danioProyectil = 1 )
-const pelotaGolfDerecha = new PelotaGolf(posicion = game.at(18,9), aspecto = "pelotaGolf.png",danioProyectil = 1 )
-const pelotaGolfDerecha2 = new PelotaGolf(posicion = game.at(18,9), aspecto = "pelotaGolf.png",danioProyectil = 1 )
+const pelotaMontania = new PelotaRugby(posicion = tinchoMontania.position(),aspecto = "pelotaRugby.png", tinchoACargo = tinchoMontania,danioProyectil = 2, direccion= derecha, velocidad=100)
+const pelotaCerca = new PelotaRugby(posicion = tinchoCerca.position(), tinchoACargo = tinchoCerca, aspecto = "pelotaRugby.png",danioProyectil = 2, direccion= derecha, velocidad=100 )
+const pelotaGolfArriba = new PelotaGolf(posicion = game.at(4,18), aspecto = "pelotaGolf.png",danioProyectil = 1, direccion= abajo, velocidad= 100 )
+const pelotaGolfArriba2 = new PelotaGolf(posicion = game.at(4,18), aspecto = "pelotaGolf.png",danioProyectil = 1, direccion= abajo, velocidad = 50 )
+const pelotaGolfAbajo = new PelotaGolf(posicion = game.at(13,0),  aspecto = "pelotaGolf.png",danioProyectil = 1, direccion= arriba, velocidad=100 )
+const pelotaGolfDerecha = new PelotaGolf(posicion = game.at(18,9), aspecto = "pelotaGolf.png",danioProyectil = 1, direccion= izquierda, velocidad= 100)
+const pelotaGolfDerecha2 = new PelotaGolf(posicion = game.at(18,9), aspecto = "pelotaGolf.png",danioProyectil = 1, direccion= izquierda, velocidad= 75)
 
 // MODELAMOS LA CLASE ALIMENTO
 class Alimento inherits MovibleDentroDelMargen {
@@ -99,9 +96,6 @@ class Alimento inherits MovibleDentroDelMargen {
 		game.schedule(3000,{=> game.removeTickEvent("alimentoMoving")} )
 	}
 	
-	method iniciarMovimientoCada(tiempo){
-		game.onTick(tiempo,"sandiaAppearing",	{=> self.configurarAlimento()})
-}
 
 }
 
@@ -111,6 +105,7 @@ object mate inherits Alimento(aspecto="mate.png") {
 		nuestroReproductor.reproducir("mate")
 		hud.aumentarPuntaje()
 	}
+	
 }
 
 // CREAMOS LOS OBJETOS DE LA CLASE ALIMENTO

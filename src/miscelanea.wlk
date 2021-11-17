@@ -7,7 +7,7 @@ import colisionables.*
 
 // MODELAMOS LA CLASE TINCHO
 class Tincho inherits Visible { 
-	const tipoTincho = agresivo // Agresivo o Tranquilo, el cual puede estar en el "Tipo" de cualquier ente que ataque, como por ejemplo en un futuro, un golfista.
+	const tipoTincho = agresivo 
 	
 	method mandarMensaje(){
 		game.say(self, tipoTincho.mandarMensaje() )
@@ -27,7 +27,7 @@ object tranquilo {
 		
 	method mandarMensaje(){
 		return mensajes.anyOne()
-		// agregar un detalle tincho asi no repetimos logica xd 
+		
 	}
 }
 // CREAMOS LOS OBJETOS DE LA CLASE TINCHO

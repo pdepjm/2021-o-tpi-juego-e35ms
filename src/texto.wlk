@@ -1,7 +1,7 @@
 import wollok.game.*
 import miscelanea.*
 
-object porGolpe { // Causa 1
+object porGolpe { 
 	
 	method position() = game.at(9,14)
 	
@@ -15,7 +15,7 @@ object porGolpe { // Causa 1
 	
 }
 
-object porTiempo { // Causa 2
+object porTiempo { 
 	
 	method position() = game.at(9,14)
 	
